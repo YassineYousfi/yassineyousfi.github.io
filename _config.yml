@@ -1,0 +1,22 @@
+# Usign the Clean Blog theme
+
+title: Homepage of Yassine Yousfi
+author: Yassine Yousfi
+email: yyousfi1@binghamton.edu
+description: Homepage of Yassine Yousfi
+baseurl: ""
+url: "http://yassine.yousfi.github.io"
+twitter_username: yassineyousfi_
+github_username: YassineYousfi
+linkedin_username: yassine-yousfi-
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+paginate: 5
+exclude: ["node_modules"]
+
+name: Yassine Yousfi, recent works
+gems:
+  - jekyll-feed
+  - jekyll-paginate

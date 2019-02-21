@@ -1,0 +1,18 @@
+---
+layout: page
+title: Posts
+permalink: /posts/
+header-img: "media/img/header.png"
+---
+
+
+<h1>Latest Posts</h1>
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+      <span class="post-meta">{{ post.date | date: '%B %d, %Y'  }}</span>
+      <p>{{ post.excerpt }}</p>
+    </li>
+  {% endfor %}
+</ul>
