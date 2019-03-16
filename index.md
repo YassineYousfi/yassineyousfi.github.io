@@ -17,3 +17,7 @@ I am a PhD student at Binghamton University (NY). My research focus is on Machin
 Recent news
 ====================
 
+- We are ranked first in the Steganalysis challenge (ALASKA)[https://alaska.utt.fr/], Learn more [here]({{ site.baseurl }}{% post_url 2019-01-30-breaking-alaska %})
+
+
+More news in the (posts) section.
