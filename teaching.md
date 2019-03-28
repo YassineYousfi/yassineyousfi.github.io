@@ -6,7 +6,5 @@ header-img: "media/img/header.png"
 ---
 
 WIP
-
-WIP
 -----------------
-WIP
+I am passionate about teaching, I will share here news and materials for my future courses.

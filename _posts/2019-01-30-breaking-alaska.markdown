@@ -9,6 +9,8 @@ author: Yassine
 [ALASKA](https://alaska.utt.fr/) is a Steganalysis challenge "into the wilderness
 of the real world". It consists of a Steganalysis task in a highly diverse source of JPEG embedded images: diverse JPEG quality factors, sensors, development and processing history, embedding algorithms, sizes and payloads.
 
-My research team ([DDE Binghamton](http://dde.binghamton.edu/)) and I are participating in ALASKA and are currently leading (Cf. Leaderboard).
+My research team ([DDE Binghamton](http://dde.binghamton.edu/)) and I participated in ALASKA phase 2 and ranked #1 out of all research teams involved (Cf. Leaderboard).
+
+Stay tuned for more details about our participation in ALASKA.
 
 <iframe id="leaderboard-tabs" src="https://alaska.utt.fr/#leaderboard" width="800" height="500"></iframe>

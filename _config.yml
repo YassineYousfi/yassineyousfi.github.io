@@ -15,6 +15,27 @@ permalink: pretty
 paginate: 5
 exclude: ["node_modules"]
 
+# Scholar
+scholar:
+  style: apa
+  locale: en
+
+  sort_by: none
+  order: ascending
+
+  source: /_bibliography/
+  bibliography: references.bib
+  bibliography_template: "{{reference}}"
+
+  replace_strings: true
+  join_strings:    true
+
+  details_dir:    bibliography
+  details_layout: bibtex.html
+  details_link:   Details
+
+  query: "@*"
+
 name: Yassine Yousfi, recent works
 gems:
   - jekyll-feed
