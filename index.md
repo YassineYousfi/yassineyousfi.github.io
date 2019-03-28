@@ -17,11 +17,10 @@ I am a PhD student at Binghamton University (NY). My research focus is on Machin
 Recent news
 ====================
 
-- We ranked first in the Steganalysis challenge [ALASKA](https://alaska.utt.fr/), Learn more [here]({% post_url 2019-01-30-breaking-alaska %}).
+- We ranked first in the Steganalysis challenge [ALASKA](https://alaska.utt.fr/){:target="_blank"}, Learn more [here]({% post_url 2019-01-30-breaking-alaska %}).
 
 More news in the [posts]({% link posts.html %}) section.
 
-
 Credits
 ====================
-- "Ocean storm", the website header photo is taken from [Prof. Jessica Fridrich](http://jessicafridrich.com) album: "APPARITION". 
+- "Ocean storm", the website header photo is taken from [Prof. Jessica Fridrich](http://jessicafridrich.com){:target="_blank"} album: "APPARITION". 
