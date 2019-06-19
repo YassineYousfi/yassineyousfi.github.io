@@ -18,6 +18,7 @@ Recent news
 ====================
 
 - We ranked first in the Steganalysis challenge [ALASKA](https://alaska.utt.fr/){:target="_blank"}, Learn more [here]({% post_url 2019-01-30-breaking-alaska %}).
+- Our ALASKA paper is accepted at the 7th ACM Workshop on Information Hiding and Multimedia Security [(IHMMSEC)](https://www.ihmmsec.org/cms/front_content.php?idcat=69&lang=2){:target="_blank"}.
 
 More news in the [posts]({% link posts.html %}) section.
 
