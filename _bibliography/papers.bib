@@ -1,7 +1,6 @@
 ---
 ---
 
-
 @article{yousfi20onehot,
   abbr={SPL},
   author={Y. Yousfi and J. Fridrich},
@@ -30,21 +29,6 @@
   selected={true}
 }
 
-@Inproceedings{You19ih,
-  abbr={IH},
-  author = {Y. Yousfi and J. Butora and Q. Giboulot and J. Fridrich},
-  title = {Breaking {ALASKA}: Color Separation for Steganalysis in {JPEG} Domain},
-  booktitle = {The 7th ACM Workshop on Information Hiding and Multimedia Security},
-  year = {2019},
-  editor = {R. Cogranne and L. Verdoliva},
-  address = {Paris, France},
-  month = {July 3--5,},
-  publisher = {{ACM} Press},
-  abstract = {This paper describes the architecture and training of detectors developed for the ALASKA steganalysis challenge. For each quality factor in the range 60–98, several multi-class tile detectors implemented as SRNets were trained on various combinations of three input channels: luminance and two chrominance channels. To accept images of arbitrary size, the detector for each quality factor was a multi-class multi-layered perceptron trained on features extracted by the tile detectors. For quality 99 and 100, a new “reverse JPEG compatibility attack” was developed and also implemented using the SRNet via the tile detector. Throughout the paper, we explain various improvements we discovered during the course of the competition and discuss the challenges we encountered and trade offs that had to be adopted in order to build a detector capable of detecting steganographic content in a stego source of great diversity.},
-  pdf={http://www.ws.binghamton.edu/fridrich/Research/ALASKA-preprint1.pdf},
-  selected={true}
-}
-
 
 @Inproceedings{but20ih,
   abbr={IH},
@@ -60,3 +44,35 @@
   pdf={http://www.ws.binghamton.edu/fridrich/Research/cost2model-10.pdf},
   selected={false}
 }
+
+@inproceedings{yousfi20imagenet,
+  abbr={WIFS},
+  author={Y. Yousfi, J. Butora, E. Khvedchenya and J. Fridrich},
+  booktitle={IEEE International Workshop on Information Forensics and Security}, 
+  title={(Under review) ImageNet Pre-trained CNN Models for JPEG Steganalysis}, 
+  year={2020},
+}
+
+@inproceedings{yousfi20successife,
+  author={Y. Yousfi, E. Akyol},
+  booktitle={ASILOMAR Conference on Signals, Systems and Computers}, 
+  title={(Under review) Successive Information Bottleneck and its applications in Deep Learning}, 
+  year={2020},
+}
+
+
+@Inproceedings{You19ih,
+  abbr={IH},
+  author = {Y. Yousfi and J. Butora and Q. Giboulot and J. Fridrich},
+  title = {Breaking {ALASKA}: Color Separation for Steganalysis in {JPEG} Domain},
+  booktitle = {The 7th ACM Workshop on Information Hiding and Multimedia Security},
+  year = {2019},
+  editor = {R. Cogranne and L. Verdoliva},
+  address = {Paris, France},
+  month = {July 3--5,},
+  publisher = {{ACM} Press},
+  abstract = {This paper describes the architecture and training of detectors developed for the ALASKA steganalysis challenge. For each quality factor in the range 60–98, several multi-class tile detectors implemented as SRNets were trained on various combinations of three input channels: luminance and two chrominance channels. To accept images of arbitrary size, the detector for each quality factor was a multi-class multi-layered perceptron trained on features extracted by the tile detectors. For quality 99 and 100, a new “reverse JPEG compatibility attack” was developed and also implemented using the SRNet via the tile detector. Throughout the paper, we explain various improvements we discovered during the course of the competition and discuss the challenges we encountered and trade offs that had to be adopted in order to build a detector capable of detecting steganographic content in a stego source of great diversity.},
+  pdf={http://www.ws.binghamton.edu/fridrich/Research/ALASKA-preprint1.pdf},
+  selected={true}
+}
+
