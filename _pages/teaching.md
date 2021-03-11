@@ -144,7 +144,7 @@ ECE 566 Detection Theory
       <td><a href="/assets/pdf/mixtures.pdf"  target="_blank"><i class="fa fa-file"></i></a></td>
     </tr>
     <tr>
-      <th scope="row">Maximum Likelihood Estimate</th>
+      <th scope="row">Maximum Likelihood Estimation</th>
       <td><a href="/assets/pdf/MLE.pdf"  target="_blank"><i class="fa fa-file"></i></a></td>
     </tr>
     <tr>
