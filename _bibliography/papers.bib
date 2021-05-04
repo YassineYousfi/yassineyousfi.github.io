@@ -1,6 +1,34 @@
 ---
 ---
 
+@inproceedings{pretrain21ih,
+  abbr={IH},
+  author = {J. Butora and Y. Yousfi and J. Fridrich},
+  title = {How to Pretrain for Stegnalysis},
+  booktitle = {The 9th ACM Workshop on Information Hiding and Multimedia Security},
+  year = {2021},
+  address = {Brussels, Belgium},
+  month = {June 22--25,},
+  publisher = {{ACM} Press},
+  abstract = {In this paper, we investigate the effect of pretraining CNNs on ImageNet on their performance when refined for steganalysis of digital images. In many cases, it seems that just ’seeing’ a large number of images helps with the convergence of the network during the refinement no matter what the pretraining task is. To achieve the best performance, the pretraining task should be related to steganalysis, even if it is done on a completely mismatched cover and stego datasets. Furthermore, the pretraining does not need to be carried out for very long and can be done with limited computational resources. An additional advantage of the pretraining is that it is done on color images and can later be applied for steganalysis of color and grayscale images while still having on-par or better performance than detectors trained specifically for a given source. The refining process is also much faster than training the network from scratch. The most surprising part of the paper is that networks pretrained on JPEG images are a good starting point for spatial domain steganalysis as well.},
+  pdf={http://www.ws.binghamton.edu/fridrich/Research/IN-pretraining-6.pdf},
+  selected={false}
+}
+
+@inproceedings{surgeries21ih,
+  abbr={IH},
+  author = {Y. Yousfi and J. Butora and J. Fridrich and C. Fuji-Tsang},
+  title = {Improving EfficientNet for JPEG Steganalysis},
+  booktitle = {The 9th ACM Workshop on Information Hiding and Multimedia Security},
+  year = {2021},
+  address = {Brussels, Belgium},
+  month = {June 22--25,},
+  publisher = {{ACM} Press},
+  abstract = {In this paper, we study the EfficientNet family pre-trained on ImageNet when used for steganalysis using transfer learning. We show that certain “surgical modifications” aimed at maintaining the input resolution in EfficientNet architectures significantly boost their performance in JPEG steganalysis, establishing thus new benchmarks. The modified models are evaluated by their detection accuracy, the number of parameters, the memory consumption, and the total floating point operations (FLOPs) on the ALASKA II dataset. We also show that, surprisingly, EfficientNets in their “vanilla form” do not perform as well as the SRNet in BOSSbase+BOWS2. This is because, unlike ALASKA II images, BOSSbase+BOWS2 contains aggressively subsampled images with more complex content. The surgical modifications in EfficientNet remedy this underperformance as well.},
+  selected={true},
+  pdf={http://www.ws.binghamton.edu/fridrich/Research/11_SURGERIES_v8_preprint.pdf}
+}
+
 @inproceedings{yousfi20imagenet,
   abbr={WIFS},
   author={Y. Yousfi and J. Butora and E. Khvedchenya and J. Fridrich},
@@ -66,6 +94,7 @@
   booktitle={ASILOMAR Conference on Signals, Systems and Computers}, 
   title={(Under preparation) Successive Information Bottleneck and applications in Deep Learning}, 
   year={2020},
+  abstract ={Information Bottleneck (IB) method studies the trade-off between compression and prediction:  extracting relevant information from the input variable $X$ while preserving relevant information about another random variable $Y$, the resulting representation is another random variable $Z$.  Motivated by the deep neural networks implementations,  this paper studies a novel variation of the $N$-layer IB problem where the layers are assumed to be encoded in a successive fashion. We propose a method for performing an N-Layer IB in a greedy fashion and analyze numerical results obtained over a set of  synthetic experiments.}
 }
 
 

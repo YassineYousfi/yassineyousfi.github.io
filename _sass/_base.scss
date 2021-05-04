@@ -394,3 +394,37 @@ footer.sticky-bottom {
     }
   }
 }
+
+// Rouge Color Customization
+figure.highlight {
+  margin: 0 0 1rem;
+}
+
+pre {
+  color: $text-color;
+  background-color: $code-bg-color-light;
+  border-radius: 6px;
+  padding: 6px 8px;
+  pre, code {
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+  }
+}
+
+code {
+  color: $text-color;
+  background-color: $code-bg-color-light;
+  border-radius: 3px;
+  padding: 3px 3px;
+}
+
+
+// Transitioning Themes
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after {
+  transition: all 750ms !important;
+  transition-delay: 0 !important;
+}

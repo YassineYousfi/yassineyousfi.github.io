@@ -104,6 +104,12 @@ ECE 580G Deep Learning for ECE
       <td><a href="your link here"><i class="fab fa-github" aria-hidden="true"></i></a></td>
     </tr>
     <tr>
+      <th scope="row">A discussion with Eugene Khvedchenya (Albumentations)</th>
+      <td></td>
+      <td><a href="https://binghamton.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=aac92bb2-c5fc-4362-a839-ac4800eb14c1" target="_blank"><i class="fa fa-film"></i></a></td>
+      <td></td>
+    </tr>
+    <tr>
       <th scope="row">Image Segmentation</th>
       <td><a href="your link here"><i class="fa fa-file"></i></a></td>
       <td><a href="https://binghamton.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=ae43b470-d6eb-4c48-83b2-ac610185c2df" target="_blank"><i class="fa fa-film"></i></a></td>
