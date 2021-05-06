@@ -51,4 +51,6 @@ On the ALASKA II dataset (figures below), the post-stem modification boosts the 
 
 <div style="text-align: center"><img src="/assets/img/surgeries_pe_vs_mem.png" width="70%"/><img src="/assets/img/surgeries_pe_vs_flops.png" width="70%"/></div>
 
-PS. Patching objects like in the code above is not best practice, but subclassing introduced a lot of boilerplate code... I would love to hear if you have a better solution for this.
+PS1. Patching objects like in the code above is not best practice, but subclassing introduced a lot of boilerplate code... I would love to hear if you have a better solution for this.
+
+PS2. We originally used Luke's [EfficientNet-PyTorch](https://github.com/lukemelas/EfficientNet-PyTorch){:target="_blank"} models for the paper, then switched to timm which included ready to use code for different conv blocks.
