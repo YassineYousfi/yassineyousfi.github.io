@@ -1,5 +1,8 @@
-WIFS:
+WIFS20:
     url: https://www.wifs2020.nyu.edu/home
+
+WIFS21:
+    url: https://wifs2021.lirmm.fr/
 
 IH:
     url: https://www.ihmmsec.org/cms/front_content.php?idcat=69&lang=2

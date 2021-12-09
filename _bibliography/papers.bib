@@ -1,6 +1,30 @@
 ---
 ---
 
+@inproceedings{tomer21augs,
+  abbr={WIFS21},
+  author={T. Itzhaki and  Y. Yousfi and J. Fridrich},
+  booktitle={IEEE International Workshop on Information Forensics and Security}, 
+  title={Data Augmentation for JPEG Steganalysis}, 
+  year={2021},
+  abstract={Deep Convolutional Neural Networks (CNNs) have performed remarkably well in JPEG steganalysis. However, they heavily rely on large datasets to avoid overfitting. Data augmentation is a popular technique to inflate the datasets available without collecting new images. For JPEG steganalysis, the augmentations predominantly used by researchers are limited to rotations and flips (D4 augmentations). This is due to the fact that the stego signal is erased by most augmentations used in computer vision. In this paper, we systematically survey a large number of other augmentation techniques and asses their benefit in JPEG steganalysis.},
+  pdf={http://www.ws.binghamton.edu/fridrich/Research/AUGS_V4.pdf}, 
+  slides={AUGS_slides_v2.pdf},
+  selected={true}
+}
+
+@inproceedings{yousfi21ldeas,
+  abbr={WIFS21},
+  author={Y. Yousfi and J. Butora and J. Fridrich},
+  booktitle={IEEE International Workshop on Information Forensics and Security}, 
+  title={CNN Steganalyzers Leverage Local Embedding Artifacts}, 
+  year={2021},
+  abstract={While convolutional neural networks have firmly established themselves as the superior steganography detectors, little human-interpretable feedback to the steganographer as to how the network reaches its decision has so far been obtained from trained models. The folklore has it that, unlike rich models, which rely on global statistics, CNNs can leverage spatially localized signals. In this paper, we adapt existing attribution tools, such as Integrated Gradients and Last Activation Maps, to show that CNNs can indeed find overwhelming evidence for steganography from a few highly localized embedding artifacts. We look at the nature of these artifacts via case studies of both modern content-adaptive and older steganographic algorithms. The main culprit is linked to “content creating changes” when the magnitude of a DCT coefficient is increased (Jsteg, –F5), which can be especially detectable for high frequency DCT modes that were originally zeros (J-MiPOD). In contrast, J-UNIWARD introduces the smallest number of locally detectable embedding artifacts among all tested algorithms.},
+  pdf={http://www.ws.binghamton.edu/fridrich/Research/lDEAs_v7.pdf}, 
+  slides={LDEAs_slides_v3.pdf},
+  selected={true}
+}
+
 @inproceedings{pretrain21ih,
   abbr={IH},
   author = {J. Butora and Y. Yousfi and J. Fridrich},
@@ -30,7 +54,7 @@
 }
 
 @inproceedings{yousfi20imagenet,
-  abbr={WIFS},
+  abbr={WIFS20},
   author={Y. Yousfi and J. Butora and E. Khvedchenya and J. Fridrich},
   booktitle={IEEE International Workshop on Information Forensics and Security}, 
   title={ImageNet Pre-trained CNNs for JPEG Steganalysis}, 
