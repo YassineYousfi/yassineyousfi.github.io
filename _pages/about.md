@@ -17,4 +17,4 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I am a PhD candidate at Binghamton University (NY). My research focus is on Machine Learning and Deep Learning and their applications in digital media security such as Steganography/Steganalysis or Watermarking. I also hold a MSc in Computer Science/Machine Learning from École Centrale de Lille (France).
+I am passionate about machine intelligence. I hold a PhD in Electrical and Computer Engineering from Binghamton University (NY) where I researched digital media security topics such as Steganography/Steganalysis or Watermarking using state-of-the-art Deep Learning and Machine Learning. I also hold a MSc in Computer Science/Machine Learning from École Centrale de Lille (France).

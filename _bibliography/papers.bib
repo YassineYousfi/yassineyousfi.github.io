@@ -1,6 +1,32 @@
 ---
 ---
 
+@phdthesis{dissertation,
+  abbr={thesis},
+  author={Y. Yousfi},
+  title={DEEP LEARNING FOR IMAGE STEGANOGRAPHY AND STEGANALYSIS. CHALLENGES, ADVANCES, AND OPPORTUNITIES}, 
+  year={2022},
+  abstract={Deep learning has proven incredibly successful in a plethora of fields. In computer vision, deep neural networks are now the state-of-the-art for a variety of tasks. At the first glance, steganography and steganalysis appear to be very much different tasks than classical computer vision tasks, yet deep learning, especially convolutional neural networks, popularized by the computer vision field, have outperformed all classical feature-based approaches for detecting steganography. 
+Intuitively, steganographic embedding changes are weak, noise-like signals executed primarily in complex content, such as textures and edges. Since computer vision classifies and categorizes content, it is also suitable for detecting the presence of noise-like stego signals modulated by content.
+In this dissertation, we focus on refactoring steganography detectors with more modern and general components, qualitatively understanding their strengths and failure cases, and using them algorithmically to improve steganography. First, we show that many custom ingredients long believed to be necessary for successfully training a deep neural network for steganography detection can be omitted in favor of more general-purpose convolutional architectures with very few domain-specific changes. Next, we focus on understanding what makes deep neural networks superior to their classical feature-based predecessors. Lastly, we use these powerful steganography detectors as a feedback loop in novel batch steganography algorithms, which allocate more payload in images where state-of-the-art detectors fail to detect steganography.},
+  pdf={yassine_PhD_dissertation.pdf}, 
+  selected={true}
+}
+
+
+@inproceedings{yassine22batch,
+  abbr={IH},
+  author={Y. Yousfi and E. Dworetzky and J. Fridrich},
+  booktitle = {The 10th ACM Workshop on Information Hiding and Multimedia Security},
+  publisher = {{ACM} Press},
+  title={Detector-Informed Batch Steganography and Pooled Steganalysis}, 
+  year={2022},
+  abstract={Abstract We study the problem of batch steganography when the senders use feedback from a steganography detector. This brings an additional level of complexity to the table due to the highly non-linear and non-Gaussian response of modern steganalysis detectors as well as the necessity to study the impact of the inevitable mismatch between senders' and Warden's detectors. Two payload spreaders are considered based on the oracle generating possible cover images. Three different pooling strategies are devised and studied for a more comprehensive assessment of security. Substantial security gains are observed with respect to previous art – the detector-agnostic image-merging sender. Close attention is paid to the impact of the information available to the Warden on security.},
+  pdf={http://www.ws.binghamton.edu/fridrich/Research/BS-revision-jf.pdf}, 
+  selected={true}
+}
+
+
 @inproceedings{tomer21augs,
   abbr={WIFS21},
   author={T. Itzhaki and  Y. Yousfi and J. Fridrich},
@@ -10,7 +36,7 @@
   abstract={Deep Convolutional Neural Networks (CNNs) have performed remarkably well in JPEG steganalysis. However, they heavily rely on large datasets to avoid overfitting. Data augmentation is a popular technique to inflate the datasets available without collecting new images. For JPEG steganalysis, the augmentations predominantly used by researchers are limited to rotations and flips (D4 augmentations). This is due to the fact that the stego signal is erased by most augmentations used in computer vision. In this paper, we systematically survey a large number of other augmentation techniques and asses their benefit in JPEG steganalysis.},
   pdf={http://www.ws.binghamton.edu/fridrich/Research/AUGS_V4.pdf}, 
   slides={AUGS_slides_v2.pdf},
-  selected={true}
+  selected={false}
 }
 
 @inproceedings{yousfi21ldeas,
@@ -115,6 +141,7 @@
 
 @inproceedings{yousfi20successife,
   author={Y. Yousfi and E. Akyol},
+  abbr={asilomar},
   booktitle={Asilomar Conference on Signals, Systems and Computers}, 
   title={Successive Information Bottleneck and applications in Deep Learning}, 
   year={2020},
