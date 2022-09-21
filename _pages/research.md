@@ -6,7 +6,15 @@ description: My research interests.
 nav: true
 ---
 
-My current research focus is the application of Machine Learning and Deep Learning in **Steganography** and **Steganalysis**. 
+## End-to-end learning of a driving planner
+
+My research focus at comma.ai is to learn driving (lateral and longitudinal planner) from data, in an end-to-end fashion.
+
+More here soon. In the meantime checkout [comma's blog](https://blog.comma.ai/){:target="_blank"}
+
+## Machine Learning and Multimedia Security
+
+My PhD thesis focused on the application of Machine Learning and Deep Learning in **Steganography** and **Steganalysis**. 
 
 Steganography is the art of covert communication when secrets are hidden in ordinary looking cover objects. The goal is to make steganographic communication indistinguishable from regular exchange of information during which no secrets are passed between communicating parties.
 
@@ -26,7 +34,7 @@ The image below is a stego image (14997 from BOSS[^1]+BOWS2[^2] dataset embedded
 
 ----------
 
-### References
+#### References
 
 [^1]: Bas, Patrick, Tomáš Filler, and Tomáš Pevný. "Break our steganographic system: the ins and outs of organizing BOSS." International workshop on information hiding. Springer, Berlin, Heidelberg, 2011.
 [^2]: [https://bows2.ec-lille.fr/](http://bows2.ec-lille.fr/){:target="_blank"}
