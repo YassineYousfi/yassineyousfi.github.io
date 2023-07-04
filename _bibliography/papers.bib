@@ -1,6 +1,19 @@
 ---
 ---
 
+@inproceedings{edgar23cost,
+  abbr={EI},
+  author={E. Kaziakhmedov, Y. Yousfi, E. Dworetzky, J. Fridrich},
+  title={Cost polarization by dequantizing for JPEG steganography}, 
+  booktitle ={Proceedings {IS\&T}, Electronic Imaging, Media Watermarking, Security, and Forensics},
+  year = {2023},
+  month = {January 16--19,},
+  address = {San Francisco, CA},
+  abstract={In this article, we study a recently proposed method for improving empirical security of steganography in JPEG images in which the sender starts with an additive embedding scheme with symmetrical costs of ±1 changes and then decreases the cost of one of these changes based on an image obtained by applying a deblocking (JPEG dequantization) algorithm to the cover JPEG. This approach provides rather significant gains in security at negligible embedding complexity overhead for a wide range of quality factors and across various embedding schemes. Challenging the original explanation of the inventors of this idea, which is based on interpreting the dequantized image as an estimate of the precover (uncompressed) image, we provide alternative arguments. The key observation and the main reason why this approach works is how the polarizations of individual DCT coefficients work together. By using a MiPOD model of content complexity of the uncompressed cover image, we show that the cost polarization technique decreases the chances of “bad” combinations of embedding changes that would likely be introduced by the original scheme with symmetric costs. This statement is quantified by computing the likelihood of the stego image w.r.t. the multivariate Gaussian precover distribution in DCT domain. Furthermore, it is shown that the cost polarization decreases spatial discontinuities between blocks (blockiness) in the stego image and enforces desirable correlations of embedding changes across blocks. To further prove the point, it is shown that in a source that adheres to the precover model, a simple Wiener filter can serve equally well as a deep-learning based deblocker.},
+  pdf={http://www.ws.binghamton.edu/fridrich/Research/cost_polarization_pdfa.pdf}, 
+  selected={false}
+}
+
 @phdthesis{dissertation,
   abbr={thesis},
   author={Y. Yousfi},

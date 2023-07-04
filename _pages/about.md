@@ -7,10 +7,6 @@ description: <a href="#">Affiliations</a>. Address. Contacts. Moto. Etc.
 profile:
   align: right
   image: Yassine_Yousfi_LRES.png
-  address: >
-    <p>ES 2340</p>
-    <p>Engineering & Science Building</p>
-    <p>85 Murray Hill Rd, Vestal, NY 13850</p>
 
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
