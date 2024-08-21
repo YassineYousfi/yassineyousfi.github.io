@@ -8,7 +8,7 @@ nav: false
 
 #### Bonjour
 
-<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/bonjour.mp3"></audio>
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/0.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -18,7 +18,7 @@ Good morning / Hello
 ----
 #### Bonsoir
 
-<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/bonsoir.mp3"></audio>
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/1.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -28,7 +28,7 @@ Good evening
 ----
 #### Salut
 
-<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/salut.mp3"></audio>
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/2.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -38,6 +38,8 @@ Hi / Bye
 ----
 #### Au revoir
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/3.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Goodbye
@@ -45,6 +47,8 @@ Goodbye
 
 ----
 #### Merci
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/4.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -54,6 +58,8 @@ Thank you
 ----
 #### Merci beaucoup
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/5.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Thank you very much
@@ -61,6 +67,8 @@ Thank you very much
 
 ----
 #### De rien
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/6.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -70,6 +78,8 @@ You're welcome
 ----
 #### S'il vous plaît
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/7.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Please (formal)
@@ -77,6 +87,8 @@ Please (formal)
 
 ----
 #### S'il te plaît
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/8.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -86,6 +98,8 @@ Please (informal)
 ----
 #### Oui
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/9.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Yes
@@ -93,6 +107,8 @@ Yes
 
 ----
 #### Non
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/10.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -102,6 +118,8 @@ No
 ----
 #### Excusez-moi
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/11.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Excuse me
@@ -109,6 +127,8 @@ Excuse me
 
 ----
 #### Pardon
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/12.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -118,6 +138,8 @@ Sorry
 ----
 #### Parlez-vous anglais?
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/13.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Do you speak English?
@@ -125,6 +147,8 @@ Do you speak English?
 
 ----
 #### Je ne parle pas français
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/14.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -134,6 +158,8 @@ I don't speak French
 ----
 #### Un peu
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/15.mp3"></audio>
+
 <details>
 <summary>English</summary>
 A little
@@ -141,6 +167,8 @@ A little
 
 ----
 #### Comment ça va?
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/16.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -150,6 +178,8 @@ How are you?
 ----
 #### Ça va bien
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/17.mp3"></audio>
+
 <details>
 <summary>English</summary>
 I'm fine
@@ -157,6 +187,8 @@ I'm fine
 
 ----
 #### Et vous?
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/18.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -166,6 +198,8 @@ And you? (formal)
 ----
 #### Et toi?
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/19.mp3"></audio>
+
 <details>
 <summary>English</summary>
 And you? (informal)
@@ -173,6 +207,8 @@ And you? (informal)
 
 ----
 #### Comment vous appelez-vous?
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/20.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -182,6 +218,8 @@ What is your name? (formal)
 ----
 #### Comment tu t'appelles?
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/21.mp3"></audio>
+
 <details>
 <summary>English</summary>
 What is your name? (informal)
@@ -189,6 +227,8 @@ What is your name? (informal)
 
 ----
 #### Je m'appelle...
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/22.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -198,6 +238,8 @@ My name is...
 ----
 #### Enchanté
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/23.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Nice to meet you
@@ -205,6 +247,8 @@ Nice to meet you
 
 ----
 #### Où est...?
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/24.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -214,6 +258,8 @@ Where is...?
 ----
 #### Où sont les toilettes?
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/25.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Where is the bathroom?
@@ -221,6 +267,8 @@ Where is the bathroom?
 
 ----
 #### Combien ça coûte?
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/26.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -230,6 +278,8 @@ How much does it cost?
 ----
 #### L'addition, s'il vous plaît
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/27.mp3"></audio>
+
 <details>
 <summary>English</summary>
 The bill, please
@@ -237,6 +287,8 @@ The bill, please
 
 ----
 #### Je voudrais...
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/28.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -246,6 +298,8 @@ I would like...
 ----
 #### Avez-vous...?
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/29.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Do you have...?
@@ -253,6 +307,8 @@ Do you have...?
 
 ----
 #### J'ai besoin de...
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/30.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -262,6 +318,8 @@ I need...
 ----
 #### Je suis perdu
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/31.mp3"></audio>
+
 <details>
 <summary>English</summary>
 I am lost
@@ -269,6 +327,8 @@ I am lost
 
 ----
 #### Pouvez-vous m'aider?
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/32.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -278,6 +338,8 @@ Can you help me?
 ----
 #### À quelle heure...?
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/33.mp3"></audio>
+
 <details>
 <summary>English</summary>
 At what time...?
@@ -285,6 +347,8 @@ At what time...?
 
 ----
 #### Aujourd'hui
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/34.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -294,6 +358,8 @@ Today
 ----
 #### Demain
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/35.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Tomorrow
@@ -301,6 +367,8 @@ Tomorrow
 
 ----
 #### Hier
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/36.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -310,6 +378,8 @@ Yesterday
 ----
 #### Matin
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/37.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Morning
@@ -317,6 +387,8 @@ Morning
 
 ----
 #### Après-midi
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/38.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -326,6 +398,8 @@ Afternoon
 ----
 #### Soir
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/39.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Evening
@@ -333,6 +407,8 @@ Evening
 
 ----
 #### Nuit
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/40.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -342,6 +418,8 @@ Night
 ----
 #### Toujours
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/41.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Always
@@ -349,6 +427,8 @@ Always
 
 ----
 #### Jamais
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/42.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -358,6 +438,8 @@ Never
 ----
 #### Souvent
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/43.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Often
@@ -365,6 +447,8 @@ Often
 
 ----
 #### Parfois
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/44.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -374,6 +458,8 @@ Sometimes
 ----
 #### Rarement
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/45.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Rarely
@@ -381,6 +467,8 @@ Rarely
 
 ----
 #### Ici
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/46.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -390,6 +478,8 @@ Here
 ----
 #### Là
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/47.mp3"></audio>
+
 <details>
 <summary>English</summary>
 There
@@ -397,6 +487,8 @@ There
 
 ----
 #### Près
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/48.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -406,6 +498,8 @@ Near
 ----
 #### Loin
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/49.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Far
@@ -413,6 +507,8 @@ Far
 
 ----
 #### Droite
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/50.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -422,6 +518,8 @@ Right
 ----
 #### Gauche
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/51.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Left
@@ -429,6 +527,8 @@ Left
 
 ----
 #### Tout droit
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/52.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -438,6 +538,8 @@ Straight ahead
 ----
 #### En haut
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/53.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Up
@@ -445,6 +547,8 @@ Up
 
 ----
 #### En bas
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/54.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -454,6 +558,8 @@ Down
 ----
 #### Ouvert
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/55.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Open
@@ -461,6 +567,8 @@ Open
 
 ----
 #### Fermé
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/56.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -470,6 +578,8 @@ Closed
 ----
 #### Entrée
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/57.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Entrance
@@ -477,6 +587,8 @@ Entrance
 
 ----
 #### Sortie
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/58.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -486,6 +598,8 @@ Exit
 ----
 #### Attendez
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/59.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Wait
@@ -493,6 +607,8 @@ Wait
 
 ----
 #### Vite
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/60.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -502,6 +618,8 @@ Quick
 ----
 #### Lentement
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/61.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Slowly
@@ -509,6 +627,8 @@ Slowly
 
 ----
 #### Avec
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/62.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -518,6 +638,8 @@ With
 ----
 #### Sans
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/63.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Without
@@ -525,6 +647,8 @@ Without
 
 ----
 #### Avant
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/64.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -534,6 +658,8 @@ Before
 ----
 #### Après
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/65.mp3"></audio>
+
 <details>
 <summary>English</summary>
 After
@@ -541,6 +667,8 @@ After
 
 ----
 #### Entre
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/66.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -550,6 +678,8 @@ Between
 ----
 #### Devant
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/67.mp3"></audio>
+
 <details>
 <summary>English</summary>
 In front of
@@ -557,6 +687,8 @@ In front of
 
 ----
 #### Derrière
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/68.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -566,6 +698,8 @@ Behind
 ----
 #### Là-bas
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/69.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Over there
@@ -573,6 +707,8 @@ Over there
 
 ----
 #### Maintenant
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/70.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -582,6 +718,8 @@ Now
 ----
 #### Plus tard
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/71.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Later
@@ -589,6 +727,8 @@ Later
 
 ----
 #### Bientôt
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/72.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -598,6 +738,8 @@ Soon
 ----
 #### Peut-être
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/73.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Maybe
@@ -605,6 +747,8 @@ Maybe
 
 ----
 #### Bien sûr
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/74.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -614,6 +758,8 @@ Of course
 ----
 #### D'accord
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/75.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Okay
@@ -621,6 +767,8 @@ Okay
 
 ----
 #### Bien
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/76.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -630,6 +778,8 @@ Good
 ----
 #### Mauvais
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/77.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Bad
@@ -637,6 +787,8 @@ Bad
 
 ----
 #### Facile
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/78.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -646,6 +798,8 @@ Easy
 ----
 #### Difficile
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/79.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Difficult
@@ -653,6 +807,8 @@ Difficult
 
 ----
 #### Cher
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/80.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -662,6 +818,8 @@ Expensive
 ----
 #### Bon marché
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/81.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Cheap
@@ -669,6 +827,8 @@ Cheap
 
 ----
 #### Grand
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/82.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -678,6 +838,8 @@ Big
 ----
 #### Petit
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/83.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Small
@@ -685,6 +847,8 @@ Small
 
 ----
 #### Plus
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/84.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -694,6 +858,8 @@ More
 ----
 #### Moins
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/85.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Less
@@ -701,6 +867,8 @@ Less
 
 ----
 #### Beaucoup
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/86.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -710,6 +878,8 @@ A lot
 ----
 #### Trop
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/87.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Too much
@@ -717,6 +887,8 @@ Too much
 
 ----
 #### Assez
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/88.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -726,6 +898,8 @@ Enough
 ----
 #### Lundi
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/89.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Monday
@@ -733,6 +907,8 @@ Monday
 
 ----
 #### Mardi
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/90.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -742,6 +918,8 @@ Tuesday
 ----
 #### Mercredi
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/91.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Wednesday
@@ -749,6 +927,8 @@ Wednesday
 
 ----
 #### Jeudi
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/92.mp3"></audio>
 
 <details>
 <summary>English</summary>
@@ -758,6 +938,8 @@ Thursday
 ----
 #### Vendredi
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/93.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Friday
@@ -766,6 +948,8 @@ Friday
 ----
 #### Samedi
 
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/94.mp3"></audio>
+
 <details>
 <summary>English</summary>
 Saturday
@@ -773,6 +957,8 @@ Saturday
 
 ----
 #### Dimanche
+
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="/assets/learn-french/95.mp3"></audio>
 
 <details>
 <summary>English</summary>
