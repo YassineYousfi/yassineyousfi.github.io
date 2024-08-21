@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>Yassine  Yousfi | How I monkey patch timm models to achieve SOTA steganalysis models</title>
+<meta name="description" content="My Research and Teaching Homepage. Based on [*folio](https://github.com/bogoli/-folio) design.
+">
+
+<!-- Bootstrap & MDB -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" integrity="sha512-RO38pBRxYH3SoOprtPTD86JFOclM51/XTIdEPh5j8sj4tp8jmQIx26twG52UaLi//hQldfrh7e51WzP9wuP32Q==" crossorigin="anonymous" />
+
+<!-- Fonts & Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"  integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+
+<!-- Styles -->
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<link rel="canonical" href="/blog/2021/surgeries/">
+
+<!-- Open Graph -->
+
+
+<link type="text/css" href="/assets/css/magnifier.css" rel="stylesheet">
+<script type="text/javascript" src="/assets/js/magnifier.js"></script>
+  </head>
+
+  <body class="fixed-top-nav ">
+
+    <!-- Header -->
+
+    <header>
+
+    <!-- Nav Bar -->
+    <nav id="navbar" class="navbar navbar-light bg-white navbar-expand-sm fixed-top">
+    <div class="container">
+      
+      <a class="navbar-brand title font-weight-lighter" href="/">
+       <span class="font-weight-bold">Yassine</span>   Yousfi
+      </a>
+      
+      <!-- Navbar Toogle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/">
+              About
+              
+            </a>
+          </li>
+          
+          <!-- Blog -->
+          <li class="nav-item active">
+            <a class="nav-link" href="/blog/">
+              Blog
+              
+            </a>
+          </li>
+          
+          <!-- Other pages -->
+          
+          
+          
+          
+          
+          
+          
+          <li class="nav-item ">
+              <a class="nav-link" href="/publications/">
+                Publications
+                
+              </a>
+          </li>
+          
+          
+          
+          <li class="nav-item ">
+              <a class="nav-link" href="/research/">
+                Research
+                
+              </a>
+          </li>
+          
+          
+          
+          <li class="nav-item ">
+              <a class="nav-link" href="/teaching/">
+                Teaching
+                
+              </a>
+          </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</header>
+
+
+    <!-- Content -->
+
+    <div class="container mt-5">
+      
+
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">How I monkey patch timm models to achieve SOTA steganalysis models</h1>
+    <p class="post-meta">April 30, 2021 • Yassine</p>
+  </header>
+
+  <article class="post-content">
+    <p>Our paper <a href="http://www.ws.binghamton.edu/fridrich/Research/11_SURGERIES_v8_preprint.pdf" target="_blank">“Improving EfficientNet for JPEG Steganalysis”</a> is accepted at <a href="https://www.ihmmsec.org/cms/front_content.php?idcat=69&amp;lang=2" target="_blank">IH&amp;MMSEC21</a>! We show that certain “surgical modifications” aimed at maintaining the input resolution in EfficientNet architectures significantly boost their performance in JPEG steganalysis.</p>
+
+<p>In practice, we monkey patch <a href="https://github.com/rwightman/pytorch-image-models" target="_blank">timm</a> models to increase the number of layers operating on the full input resolution. Here is an example of one of the modifications we propose: the post stem insertion.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">net</span> <span class="o">=</span> <span class="n">timm</span><span class="p">.</span><span class="n">create_model</span><span class="p">(</span><span class="s">'efficientnet_b6'</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># 🙈 patching - Post Stem insertion
+</span><span class="n">net</span><span class="p">.</span><span class="n">conv_stem</span><span class="p">.</span><span class="n">stride</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">net</span><span class="p">.</span><span class="n">num_post_stem_layers</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">net</span><span class="p">.</span><span class="n">stem_size</span> <span class="o">=</span> <span class="n">net</span><span class="p">.</span><span class="n">conv_stem</span><span class="p">.</span><span class="n">out_channels</span>
+<span class="n">net</span><span class="p">.</span><span class="n">post_stem_block</span> <span class="o">=</span> <span class="n">timm</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">resnet</span><span class="p">.</span><span class="n">BasicBlock</span> 
+<span class="n">net</span><span class="p">.</span><span class="n">downsample_block</span> <span class="o">=</span> <span class="n">timm</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">resnet</span><span class="p">.</span><span class="n">downsample_conv</span>
+
+<span class="n">post_stem_layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">net</span><span class="p">.</span><span class="n">post_stem_block</span><span class="p">(</span><span class="n">net</span><span class="p">.</span><span class="n">stem_size</span><span class="p">,</span> <span class="n">net</span><span class="p">.</span><span class="n">stem_size</span><span class="p">,</span> 
+                                        <span class="n">attn_layer</span><span class="o">=</span><span class="s">'se'</span><span class="p">)]</span><span class="o">*</span><span class="n">net</span><span class="p">.</span><span class="n">num_post_stem_layers</span>                                    
+<span class="n">post_stem_layers</span><span class="p">.</span><span class="n">extend</span><span class="p">([</span><span class="n">net</span><span class="p">.</span><span class="n">post_stem_block</span><span class="p">(</span><span class="n">net</span><span class="p">.</span><span class="n">stem_size</span><span class="p">,</span> <span class="n">net</span><span class="p">.</span><span class="n">stem_size</span><span class="p">,</span> <span class="n">attn_layer</span><span class="o">=</span><span class="s">'se'</span><span class="p">,</span> 
+                          <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">downsample</span><span class="o">=</span><span class="n">net</span><span class="p">.</span><span class="n">downsample_block</span><span class="p">(</span><span class="n">net</span><span class="p">.</span><span class="n">stem_size</span><span class="p">,</span> 
+                          <span class="n">net</span><span class="p">.</span><span class="n">stem_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">))])</span>
+<span class="n">net</span><span class="p">.</span><span class="n">prost_stem</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Sequential</span><span class="p">(</span><span class="o">*</span><span class="n">post_stem_layers</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">forward_features</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">conv_stem</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">bn1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">act1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">prost_stem</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># Where the magic happens
+</span>  <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">blocks</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">conv_head</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">bn2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">act2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">x</span>    
+
+<span class="n">net</span><span class="p">.</span><span class="n">forward_features</span> <span class="o">=</span> <span class="n">types</span><span class="p">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">forward_features</span><span class="p">,</span> <span class="n">net</span><span class="p">)</span></code></pre></figure>
+
+<p>The EfficientNet layers are pertained on ImageNet, while the inserted ResNet layers (and the FC) are randomly initialized. We show in the paper that pretraining the whole architecture isn’t needed. Surprising, right?</p>
+
+<p>We compare the modified EfficientNets with the vanilla nets, as well as the winner model of the ALASKA II competition (SE-ReSnet 18 with stem pooling &amp; strides disabled) in terms of FLOPs, and Memory needed to train using a batch size of 8 (although this is not a batch size we recommend, we typically used a minimum batch size of 24).</p>
+
+<p>On the ALASKA II dataset (figures below), the post-stem modification boosts the performance while keeping the computational cost and the memory requirements reasonable by increasing the number of unpooled layers in the architecture. The modified models reach state-of-the-art performance with less than 1/2 of the FLOPs of the current best model. On the BOSSBase, the post-stem modification of EfficientNet also achieves state-of-the-art performance. More details in the <a href="http://www.ws.binghamton.edu/fridrich/Research/11_SURGERIES_v8_preprint.pdf" target="_blank">preprint</a>.</p>
+
+<div style="text-align: center"><img src="/assets/img/surgeries_pe_vs_mem.png" width="70%" /><img src="/assets/img/surgeries_pe_vs_flops.png" width="70%" /></div>
+
+<p>PS1. Patching objects like in the code above is not best practice, but subclassing introduced a lot of boilerplate code… I would love to hear if you have a better solution for this.</p>
+
+<p>PS2. We originally used Luke’s <a href="https://github.com/lukemelas/EfficientNet-PyTorch" target="_blank">EfficientNet-PyTorch</a> models for the paper, then switched to timm which included ready to use code for different conv blocks.</p>
+
+  </article>
+
+  
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname  = 'yousfiyassine';
+      var disqus_identifier = '/blog/2021/surgeries';
+      var disqus_title      = "How I monkey patch timm models to achieve SOTA steganalysis models";
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
+
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+</div>
+
+    </div>
+
+    <!-- Footer -->
+
+    
+<footer class="fixed-bottom">
+  <div class="container mt-0">
+    &copy; Copyright 2024 Yassine  Yousfi.
+    Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+
+    
+  </div>
+</footer>
+
+
+
+  </body>
+
+  <!-- Load Core and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha512-/DXTXr6nQodMUiq+IUJYCt2PPOUjrHJ9wFrqpJ3XkgPNOZVfMok7cRw6CSxyCQxXn6ozlESsSh1/sMCTF1rL/g==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.4.4/umd/popper.min.js" integrity="sha512-eUQ9hGdLjBjY3F41CScH3UX+4JDSI9zXeroz7hJ+RteoCaY+GP/LDoM8AO+Pt+DRFw3nXqsjh9Zsts8hnYv8/A==" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha512-M5KW3ztuIICmVIhjSqXe01oV2bpe248gOxqmlcYrEzAvws7Pw3z6BK0iGbrwvdrUQUhi3eXgtxp5I8PDo9YfjQ==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"  integrity="sha512-Mug9KHKmroQFMLm93zGrjhibM2z2Obg9l6qFG2qKjXEXkMp/VDkI4uju9m4QKPjWSwQ6O2qzZEnJDEeCw0Blcw==" crossorigin="anonymous"></script>
+
+<!-- Load Common JS -->
+<script src="/assets/js/common.js"></script>
+
+<!-- Code Syntax Highlighting -->
+<link rel="stylesheet" href="https://gitcdn.link/repo/jwarby/jekyll-pygments-themes/master/github.css" />
+
+
+<!-- Load KaTeX -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+<script src="/assets/js/katex.js"></script>
+
+
+
+<!-- Load Mansory & imagesLoaded -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js" integrity="" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+
+<!-- Project Cards Layout -->
+<script type="text/javascript">
+  // Init Masonry
+  var $grid = $('.grid').masonry({
+    gutter: 10,
+    horizontalOrder: true,
+    itemSelector: '.grid-item',
+  });
+  // layout Masonry after each image loads
+  $grid.imagesLoaded().progress( function() {
+    $grid.masonry('layout');
+  });
+</script>
+
+
+
+
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-156022446-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+</html>
