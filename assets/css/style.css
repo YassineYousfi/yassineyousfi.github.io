@@ -82,3 +82,24 @@ pre {
   overflow-x: auto;
   overflow-y: hidden;
 }
+
+@media (max-width: 520px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-bottom: 0.6rem;
+  }
+
+  .site-nav {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 0.9rem;
+  }
+
+  .site-nav a {
+    margin-left: 0;
+  }
+}
