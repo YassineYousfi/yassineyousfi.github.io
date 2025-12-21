@@ -1,5 +1,3 @@
-/* styles for magnifier image pairs */
-
 /* style for the DIV that holds the image pair */
 .magnifier {
   overflow: hidden;
@@ -12,18 +10,23 @@
   overflow: hidden;
   width: 150px;
   height: 150px;
+  /* optional so you can see it */
+  /* border: 2px solid rgba(255,255,255,0.8); */
+}
+
+/* stop theme “responsive img” rules from breaking sizing */
+.magnifier img {
+  max-width: none !important;
 }
 
 /* style for the small IMG that appears on the page */
 .magsmall {
-  position: absolute; 
-  border-style: none
+  position: absolute;
+  border-style: none;
 }
 
-/* style for the magnified image, using a clip rectangle */
+/* style for the magnified image */
 .maglarge {
-  position: absolute; 
-  border-style: none
+  position: absolute;
+  border-style: none;
 }
-
-
