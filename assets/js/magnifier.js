@@ -1,5 +1,5 @@
 // Original source: http://webdeveloper.earthweb.com/repository/javascripts/2005/03/660841/vergrootglas.html
-// 
+//
 // Changes and improvements:
 // - supports multiple images, anywhere on page, not just at top
 // - calculates magnification from the image width's
@@ -43,7 +43,7 @@ var defaultClipHeight = 150;
 //  data.lens - the maglens div object with width and height
 //  data.rect - the clipping rectangle with width and height
 //  -- only one of data.lens and data.rect should exist
- 
+
 var imagePairData = [];
 
 // currentImagePair: the imagePairData for the item currently being magnified, if any
@@ -67,7 +67,7 @@ function centerLens(data, x, y) {
 function centerRect(rect, x, y) {
   var dx = Math.round(rect.width / 2);
   var dy = Math.round(rect.height / 2);
-    
+
   return "rect(" + (y - dy) + "px " + (x + dx) + "px " + (y + dy) + "px " + (x - dx) + "px)";
 }
 
@@ -82,7 +82,7 @@ function findImagePairData(x, y) {
 }
 
 // Don't use getCurrentStyle() -- Opera 9.5 calculates a zero-sized clipping
-// rectangle as a default. 
+// rectangle as a default.
 function getClipRect(node) {
   var rect = node.style.clip || defaultClipRect;
   var matches = /([\-.0-9]+)[^\-.0-9]+([\-.0-9]+)[^\-.0-9]+([\-.0-9]+)[^\-.0-9]+([\-.0-9]+)/.exec(rect);
@@ -215,7 +215,7 @@ function makeImagePairData(i, largeImage) {
     magAlert("No large image for magnifier " + (i + 1));
     return null;
   }
-  
+
   var imageLabel = "image: " + getLabel(largeImage);
 
   // There's either a clipping maglens DIV...
@@ -224,14 +224,14 @@ function makeImagePairData(i, largeImage) {
     magAlert("Can't get lens dimensions for " + imageLabel);
     return null;
   }
-  
+
   // ... or a clipping rectangle on the large image.
   var rect = lens ? null : getClipRect(largeImage);
   if (rect && (!rect.width || !rect.height || isNaN(rect.width) || isNaN(rect.height))) {
     magAlert("Can't get clip dimensions for " + imageLabel);
     return null;
   }
-  
+
   // The size of the small image is set by the parent DIV.
   var parent = getMagnifierParent(largeImage);
   if (!parent) {
@@ -246,10 +246,10 @@ function makeImagePairData(i, largeImage) {
     magAlert("No small image for " + imageLabel);
     return null;
   }
-  
+
   var sx = getOffset(smallImage, "offsetLeft");
   var sy = getOffset(smallImage, "offsetTop");
-  
+
   var sw = getInlineValue(parent, "width");
   var sh = getInlineValue(parent, "height");
   if (isNaN(sw) || isNaN(sh)) {
@@ -260,7 +260,7 @@ function makeImagePairData(i, largeImage) {
     smallImage.width = sw;
     smallImage.height = sh;
   }
-  
+
   // The size of the large image is specifed on the image.
   var lw = getInlineValue(largeImage, "width");
   var lh = getInlineValue(largeImage, "height");
@@ -268,7 +268,7 @@ function makeImagePairData(i, largeImage) {
     magAlert("Can't get large image dimensions for " + imageLabel);
     return null;
   }
-  
+
   return {
     small: { image: smallImage, x: sx, y: sy, width: sw, height: sh },
     large: { image: largeImage, width: lw, height: lh },
@@ -287,7 +287,7 @@ function makeSmallImage(largeImage, parent, refChild) {
     magAlert("Problem getting parent DIV for " + getLabel(largeImage));
     return null;
   }
-  
+
   var smallImage = new Image();
   smallImage.className = "magsmall";
   smallImage.style.position = "absolute";
@@ -316,9 +316,9 @@ function mouseTrack(evt) {
      y = event.clientY + (document.body.scrollTop || document.documentElement.scrollTop) - document.body.clientTop;
      event.cancelBubble = true;
   }
-  
+
   var data = getImagePairData(x, y);
-  
+
   if (data) {
     updateMagnifiedImage(x, y, data);
   }
@@ -347,8 +347,8 @@ function updateMagnifiedImage(x, y, data) {
   var Rx = Math.floor(rx * data.mag.x);
   var Ry = Math.floor(ry * data.mag.y);
   var Sx, Sy;
-  var largeStyle = data.large.image.style;    
-  
+  var largeStyle = data.large.image.style;
+
   // if using lens div
   if (data.lens) {
     // position lens
@@ -364,11 +364,11 @@ function updateMagnifiedImage(x, y, data) {
     Sx = x - Rx - sx;
     Sy = y - Ry - sy;
   }
-  
+
   largeStyle.left = Sx + "px";
   largeStyle.top = Sy + "px";
 //  window.status = "xy (" + x + "," + y + ") sxy (" + sx + "," + sy  + ") rxy (" + rx + "," + ry  + ") Rxy (" + Rx + "," + Ry + ") Sy (" + Sx + "," + Sy + ")";
-  
+
   largeStyle.display = "block";
   currentImagePair = data;
 }
@@ -395,7 +395,7 @@ function registerImagePairs() {
   // images so collect large images first to avoid endless insertion.
   var largeImages = getLargeImages();
   imagePairData = [];
-  
+
   for (var i = 0; i < largeImages.length; ++i) {
     var data = makeImagePairData(i, largeImages[i]);
     if (data) {
