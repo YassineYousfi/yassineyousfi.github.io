@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Digital Life Security</title>
+<link rel="stylesheet" href="/assets/css/style.css" />
+<!-- Magnifier -->
+<link rel="stylesheet" href="/assets/css/magnifier.css" />
+<script defer src="/assets/js/magnifier.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: sans-serif; }
+.slide { display: none; width: 100vw; height: 100vh; padding: 60px; padding-bottom: 80px; overflow: hidden; font-size: 1.1rem; }
+.slide.active { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.slide h1, .slide h2, .slide h3 { margin-bottom: 0.5em; }
+.slide p, .slide ul, .slide ol { margin-bottom: 0.5em; font-size: 1.2em; }
+.slide ul, .slide ol { text-align: left; }
+.slide pre { text-align: left; max-width: 80%; }
+.slide img { max-width: 100%; max-height: 50vh; }
+.slide.two-column-list {
+  align-items: stretch;
+}
+.slide.two-column-list h2 {
+  text-align: center;
+}
+.agenda-table {
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.agenda-table th,
+.agenda-table td {
+  padding: 0.45em 1.1em;
+  text-align: left;
+  vertical-align: top;
+}
+.agenda-table th {
+  font-size: 1.05em;
+  border-bottom: 2px solid #d8dee4;
+}
+.agenda-table td {
+  font-size: 1em;
+  white-space: nowrap;
+}
+.agenda-table tbody tr:not(:last-child) td {
+  border-bottom: 1px solid #eceff3;
+}
+.slide s,
+.slide del {
+  color: inherit;
+  text-decoration: none;
+  background-image:
+    linear-gradient(-3.4deg, transparent 41%, rgba(185, 28, 28, 0.88) 41%, rgba(185, 28, 28, 0.88) 55%, transparent 55%),
+    linear-gradient(1.6deg, transparent 47%, rgba(127, 29, 29, 0.72) 47%, rgba(127, 29, 29, 0.72) 60%, transparent 60%),
+    linear-gradient(-0.9deg, transparent 50%, rgba(220, 38, 38, 0.6) 50%, rgba(220, 38, 38, 0.6) 58%, transparent 58%),
+    linear-gradient(3.2deg, transparent 46%, rgba(153, 27, 27, 0.38) 46%, rgba(153, 27, 27, 0.38) 53%, transparent 53%);
+  background-repeat: no-repeat;
+  background-size: 103% 95%, 97% 101%, 107% 90%, 99% 94%;
+  background-position: -0.02em 0.04em, 0.04em -0.04em, -0.05em 0.13em, 0.02em 0.09em;
+}
+.slide.divider {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.slide.divider h1 {
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  line-height: 1;
+  margin-bottom: 0.2em;
+}
+.slide.divider p {
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted, #666);
+}
+nav { position: fixed; z-index: 10; bottom: 20px; left: 0; right: 0; display: flex; justify-content: center; gap: 20px; align-items: center; }
+nav button { padding: 8px 20px; font-size: 1em; cursor: pointer; }
+nav input { width: 72px; padding: 8px 10px; font-size: 1em; text-align: center; }
+nav span { font-size: 0.9em; color: var(--muted, #666); }
+.nav-jump { display: flex; gap: 8px; align-items: center; }
+.gradio-frame { width: 90%; flex: 1; min-height: 300px; border: 0; }
+
+@media (max-width: 900px), (max-height: 600px) {
+  .slide {
+    height: 100dvh;
+    padding: 16px;
+    padding-top: max(16px, env(safe-area-inset-top));
+    padding-right: max(16px, env(safe-area-inset-right));
+    padding-bottom: calc(128px + env(safe-area-inset-bottom));
+    padding-left: max(16px, env(safe-area-inset-left));
+    overflow: auto;
+    font-size: 0.95rem;
+  }
+  .slide.active { justify-content: safe center; }
+  .slide.demo-slide.active { justify-content: flex-start; }
+  .slide p, .slide ul, .slide ol { font-size: 1em; }
+  .slide a { overflow-wrap: anywhere; }
+  .slide input { font-size: 16px !important; }
+  .slide pre { max-width: 100%; overflow: auto; font-size: 0.9em; }
+  .slide img { max-width: 100%; height: auto; }
+  .slide canvas { max-width: 100%; height: auto; }
+  .slide .magnifier {
+    width: min(85vw, 400px) !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1;
+  }
+  .slide .magnifier .magsmall {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .slide > .demo-row {
+    flex: none !important;
+    min-height: auto !important;
+    width: 100%;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  .agenda-table td { white-space: normal; }
+  .gradio-frame { width: 100%; }
+  nav {
+    gap: 8px;
+    padding: 8px max(8px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left));
+    bottom: 0;
+    flex-wrap: wrap;
+    background: var(--bg, #fff);
+  }
+  nav button, nav input { min-height: 44px; padding: 6px 10px; }
+}
+
+@media (orientation: landscape) and (max-height: 600px) {
+  .slide { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
+}
+
+@media (max-width: 340px) {
+  .slide { padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
+  .slide.divider h1 { font-size: clamp(2.5rem, 15vw, 3.5rem); }
+  .nav-jump { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Title Slide -->
+<div class="slide">
+  <h1>Hiding, Detecting, Protecting</h1>
+  <h2>Digital Media Security in the Age of Machine Learning</h2>
+  <h3>UM6P College of Computing - Guest Lecture</h3>
+  <p><small>Yassine Yousfi</small></p>
+</div>
+
+<!-- Title Slide -->
+<div class="slide">
+  <h1>Hiding, Detecting, Protecting</h1>
+  <h2>Digital <s>Media</s> Life Security in the Age of <s>Machine Learning</s> Artificial Intelligence</h2>
+  <h3>UM6P College of Computing - Guest Lecture</h3>
+  <p><small>Yassine Yousfi</small></p>
+</div>
+
+<!-- Agenda Slide -->
+<div class="slide two-column-list">
+  <h2>Digital Life</h2>
+  <table class="agenda-table">
+    <thead>
+      <tr>
+        <th>BC (Before ChatGPT)</th>
+        <th>AD (After Deep Learning)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Digital Images</td>
+        <td>Social Media</td>
+      </tr>
+      <tr>
+        <td>Text Messages and Emails</td>
+        <td>Large Language Models generated content</td>
+      </tr>
+      <tr>
+        <td>Static Documents</td>
+        <td>AI Agents Automation</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Divider Slide Template -->
+<div class="slide divider">
+  <h1>Digital Life Security</h1>
+</div>
+
+<!-- Normal Slide -->
+<div class="slide">
+  <h2>Deepfakes</h2>
+  <img src="assets/img/deepfake.png" alt="Description" />
+</div>
+
+<div class="slide">
+  <h2>War on encryption</h2>
+  <img src="assets/img/encryption_bans.png" alt="Description" />
+  <p><small>Source: <a href="https://www.gp-digital.org/world-map-of-encryption/" target="_blank">https://www.gp-digital.org/world-map-of-encryption/</a></small></p>
+</div>
+
+<div class="slide">
+  <h2>Sensitive Communications</h2>
+  <img src="assets/img/signalgate.png" alt="Description" />
+  <p><small>Source: <a href="https://www.theatlantic.com/politics/archive/2025/03/trump-administration-accidentally-texted-me-its-war-plans/682151/" target="_blank">https://www.theatlantic.com/politics/archive/2025/03/trump-administration-accidentally-texted-me-its-war-plans/682151/</a></small></p>
+</div>
+
+<div class="slide">
+  <h2>Coding Agents</h2>
+  <img src="assets/img/yolo.png" alt="Description" />
+</div>
+
+<div class="slide">
+  <h2>Prompt Injection</h2>
+  <img src="assets/img/prompt_injection.png" alt="Description" />
+  <p><small>Source: Understanding prompt injections: a frontier security challenge. OpenAI</small></p>
+</div>
+
+<div class="slide">
+  <h2>LLMs are also protected content</h2>
+  <img src="assets/img/cursor.png" alt="Description" />
+</div>
+
+<!-- Divider Slide Template -->
+<div class="slide divider">
+  <h1>Artificial Intelligence</h1>
+</div>
+
+<div class="slide">
+  <h2>Software</h2>
+  <h3>C++</h3>
+  <img src="assets/img/hello_world.png" alt="Description" />
+</div>
+
+<div class="slide">
+  <h2>Machine Learning</h2>
+  <h3>Structured (tabular) data</h3>
+  <img src="assets/img/skl.png" alt="Description" />
+</div>
+
+
+<div class="slide">
+  <h2>Deep Learning</h2>
+  <h3>Computer Vision</h3>
+  <img src="assets/img/lecun1989.jpeg" alt="Description" />
+</div>
+
+<div class="slide">
+  <h2>Deeper Learning</h2>
+  <h3>Large Language Models</h3>
+  <img src="assets/img/chatgpt.png" alt="Description" />
+</div>
+
+
+<div class="slide">
+  <h2>Deeperer Learning</h2>
+  <h3>Agents</h3>
+  <img src="assets/img/openclaw_1.png" alt="Description" />
+</div>
+
+<div class="slide">
+  <h2>Artificial Intelligence Progress</h2>
+  <img src="assets/img/ml_progress.png" alt="Description" />
+  <p style="text-align: center;">
+    <small>Kiela, Douwe, et al. "Dynabench: Rethinking benchmarking in NLP."<br>Proceedings of the 2021 conference of the North American chapter of the Association for Computational Linguistics</small>
+  </p>
+</div>
+
+<!-- Divider Slide Template -->
+<div class="slide divider">
+  <h1>Hiding</h1>
+  <h2>Steganography</h2>
+</div>
+
+<!-- Normal Slide -->
+<div class="slide">
+  <h2>Steganography</h2>
+  <ul>
+    <li>👩 Alice wants to send Bob 👦 a secret message</li>
+    <li>She hides it inside a normal-looking image</li>
+    <li>Modern JPEG images are typically 3-4 MB</li>
+    <li>Alice's message is only a few KB</li>
+  </ul>
+</div>
+
+
+<!-- Slide with JavaScript Bit Plane Viewer -->
+<div class="slide demo-slide">
+  <h2>Hide in the noise</h2>
+  <h3>Least Significant Bit Steganography</h3>
+  <div class="demo-row" style="display: flex; gap: 20px; align-items: center; flex: 1; min-height: 0;">
+    <div style="text-align: center;">
+      <p style="font-size: 0.9em;">Original</p>
+      <canvas id="lsb-img-original" width="300" height="300" style="border: 1px solid #ccc;"></canvas>
+    </div>
+    <div style="text-align: center;">
+      <p style="font-size: 0.9em;">Significant Bit</p>
+      <input id="bit-plane-input" type="number" min="0" max="7" step="1" value="0" style="width: 80px; padding: 8px 10px; font-size: 1em; text-align: center;" />
+      <br />
+      <br />
+      <button id="bit-plane-btn" style="padding: 8px 20px; font-size: 1em; cursor: pointer;">Apply</button>
+    </div>
+    <div style="text-align: center;">
+      <p style="font-size: 0.9em;">Bit Plane</p>
+      <canvas id="lsb-img-output" width="300" height="300" style="border: 1px solid #ccc;"></canvas>
+    </div>
+  </div>
+
+  <script>
+  (function() {
+    const input = document.getElementById("bit-plane-input");
+    const button = document.getElementById("bit-plane-btn");
+    const originalCanvas = document.getElementById("lsb-img-original");
+    const outputCanvas = document.getElementById("lsb-img-output");
+
+    function getBitIndex() {
+      const value = Number.parseInt(input.value, 10);
+      const bitIndex = Number.isNaN(value) ? 0 : value;
+      return Math.max(0, Math.min(7, bitIndex));
+    }
+
+    function drawBitPlane() {
+      if (!window._lsbImgData) return;
+      const width = window._lsbImgWidth;
+      const height = window._lsbImgHeight;
+      const bitIndex = getBitIndex();
+      const mask = 1 << bitIndex;
+      const source = window._lsbImgData;
+      const out = new Uint8ClampedArray(width * height * 4);
+
+      for (let i = 0; i < width * height; i += 1) {
+        const srcOffset = i * 4;
+        const dstOffset = srcOffset;
+        out[dstOffset] = (source[srcOffset] & mask) ? 255 : 0;
+        out[dstOffset + 1] = (source[srcOffset + 1] & mask) ? 255 : 0;
+        out[dstOffset + 2] = (source[srcOffset + 2] & mask) ? 255 : 0;
+        out[dstOffset + 3] = 255;
+      }
+
+      outputCanvas.width = width;
+      outputCanvas.height = height;
+      outputCanvas.getContext("2d").putImageData(new ImageData(out, width, height), 0, 0);
+    }
+
+    function applyBitPlane() {
+      if (button.disabled) return;
+      button.disabled = true;
+      button.textContent = "Working...";
+      try {
+        drawBitPlane();
+      } finally {
+        button.textContent = "Apply";
+        button.disabled = false;
+      }
+    }
+
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = function() {
+      const c = document.createElement("canvas");
+      c.width = img.width;
+      c.height = img.height;
+      const ctx = c.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+      const data = ctx.getImageData(0, 0, img.width, img.height);
+
+      originalCanvas.width = img.width;
+      originalCanvas.height = img.height;
+      originalCanvas.getContext("2d").drawImage(img, 0, 0);
+
+      window._lsbImgWidth = img.width;
+      window._lsbImgHeight = img.height;
+      window._lsbImgData = data.data;
+      applyBitPlane();
+    };
+
+    button.addEventListener("click", applyBitPlane);
+    input.addEventListener("keydown", event => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        applyBitPlane();
+      }
+    });
+
+    img.src = "/assets/img/stego_example.png";
+  })();
+  </script>
+</div>
+
+
+<!-- Slide with Bit Plane Character Drawing -->
+<div class="slide demo-slide">
+  <h2>Hide in the Bit Plane</h2>
+  <h3>Character Embedding Demo</h3>
+  <div class="demo-row" style="display: flex; gap: 20px; align-items: center; flex: 1; min-height: 0; width: 100%; justify-content: center;">
+    <div style="text-align: center;">
+      <p style="font-size: 0.9em;">Cover</p>
+      <canvas id="charbit-img-original" width="300" height="300" style="border: 1px solid #ccc;"></canvas>
+    </div>
+    <div style="text-align: center; min-width: 180px;">
+      <p style="font-size: 0.9em;">Bit Plane</p>
+      <input id="charbit-plane-input" type="number" min="0" max="7" step="1" value="0" style="width: 80px; padding: 8px 10px; font-size: 1em; text-align: center;" />
+      <br />
+      <br />
+      <p style="font-size: 0.9em;">Character</p>
+      <input id="charbit-char-input" type="text" maxlength="1" value="A" style="width: 80px; padding: 8px 10px; font-size: 1em; text-align: center;" />
+      <br />
+      <br />
+      <button id="charbit-apply-btn" style="padding: 8px 20px; font-size: 1em; cursor: pointer;">Apply</button>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 16px; align-items: center;">
+      <div style="text-align: center;">
+        <p style="font-size: 0.9em;">Stego</p>
+        <canvas id="charbit-img-output" width="300" height="300" style="border: 1px solid #ccc;"></canvas>
+      </div>
+      <div style="text-align: center;">
+        <p style="font-size: 0.9em;">Stego Bit Plane</p>
+        <canvas id="charbit-plane-output" width="300" height="300" style="border: 1px solid #ccc;"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function() {
+    const planeInput = document.getElementById("charbit-plane-input");
+    const charInput = document.getElementById("charbit-char-input");
+    const button = document.getElementById("charbit-apply-btn");
+    const originalCanvas = document.getElementById("charbit-img-original");
+    const outputCanvas = document.getElementById("charbit-img-output");
+    const planeCanvas = document.getElementById("charbit-plane-output");
+
+    function getBitIndex() {
+      const value = Number.parseInt(planeInput.value, 10);
+      const bitIndex = Number.isNaN(value) ? 0 : value;
+      return Math.max(0, Math.min(7, bitIndex));
+    }
+
+    function getCharacter() {
+      const value = charInput.value || "A";
+      return value.charAt(0);
+    }
+
+    function buildCharacterMask(width, height, character) {
+      const maskCanvas = document.createElement("canvas");
+      maskCanvas.width = width;
+      maskCanvas.height = height;
+      const ctx = maskCanvas.getContext("2d");
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, width, height);
+      ctx.fillStyle = "white";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.font = `bold ${Math.floor(Math.min(width, height) * 0.58)}px sans-serif`;
+      ctx.fillText(character, width / 2, height / 2);
+      return ctx.getImageData(0, 0, width, height).data;
+    }
+
+    function drawRgbaToCanvas(canvas, data, width, height) {
+      canvas.width = width;
+      canvas.height = height;
+      canvas.getContext("2d").putImageData(new ImageData(data, width, height), 0, 0);
+    }
+
+    function drawSelectedBitPlane(sourceData, width, height, bitIndex) {
+      const mask = 1 << bitIndex;
+      const plane = new Uint8ClampedArray(width * height * 4);
+      for (let i = 0; i < width * height; i += 1) {
+        const offset = i * 4;
+        plane[offset] = (sourceData[offset] & mask) ? 255 : 0;
+        plane[offset + 1] = (sourceData[offset + 1] & mask) ? 255 : 0;
+        plane[offset + 2] = (sourceData[offset + 2] & mask) ? 255 : 0;
+        plane[offset + 3] = 255;
+      }
+      drawRgbaToCanvas(planeCanvas, plane, width, height);
+    }
+
+    function applyCharacterToBitPlane() {
+      if (!window._charbitImgData || button.disabled) return;
+      button.disabled = true;
+      button.textContent = "Working...";
+      try {
+        const width = window._charbitImgWidth;
+        const height = window._charbitImgHeight;
+        const bitIndex = getBitIndex();
+        const character = getCharacter();
+        const bitMask = 1 << bitIndex;
+        const clearMask = 255 ^ bitMask;
+        const source = window._charbitImgData;
+        const result = new Uint8ClampedArray(source);
+        const characterMask = buildCharacterMask(width, height, character);
+
+        for (let i = 0; i < width * height; i += 1) {
+          const offset = i * 4;
+          const shouldDraw = characterMask[offset] > 0;
+          if (!shouldDraw) continue;
+          result[offset] = (result[offset] & clearMask) | bitMask;
+          result[offset + 1] = (result[offset + 1] & clearMask) | bitMask;
+          result[offset + 2] = (result[offset + 2] & clearMask) | bitMask;
+        }
+
+        drawRgbaToCanvas(outputCanvas, result, width, height);
+        drawSelectedBitPlane(result, width, height, bitIndex);
+      } finally {
+        button.textContent = "Apply";
+        button.disabled = false;
+      }
+    }
+
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = function() {
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+      const imageData = ctx.getImageData(0, 0, img.width, img.height);
+
+      originalCanvas.width = img.width;
+      originalCanvas.height = img.height;
+      originalCanvas.getContext("2d").drawImage(img, 0, 0);
+
+      window._charbitImgWidth = img.width;
+      window._charbitImgHeight = img.height;
+      window._charbitImgData = imageData.data;
+      applyCharacterToBitPlane();
+    };
+
+    button.addEventListener("click", applyCharacterToBitPlane);
+    planeInput.addEventListener("keydown", event => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        applyCharacterToBitPlane();
+      }
+    });
+    charInput.addEventListener("keydown", event => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        applyCharacterToBitPlane();
+      }
+    });
+
+    img.src = "/assets/img/stego_example.png";
+  })();
+  </script>
+</div>
+
+
+<!-- Slide with JavaScript Convolution -->
+<div class="slide demo-slide">
+  <h2>Hide in the noise</h2>
+  <h3>Content Adaptive Steganography</h3>
+  <div class="demo-row" style="display: flex; gap: 20px; align-items: center; flex: 1; min-height: 0;">
+    <!-- Left: original image -->
+    <div style="text-align: center;">
+      <p style="font-size: 0.9em;">Cover</p>
+      <canvas id="img-original" width="300" height="300" style="border: 1px solid #ccc;"></canvas>
+    </div>
+    <!-- Center: kernel input -->
+    <div style="text-align: center;">
+      <p style="font-size: 0.9em;">Kernel</p>
+      <table id="kernel-grid" style="margin: 0 auto; border-collapse: collapse;"></table>
+      <br />
+      <button id="convolve-btn" style="padding: 8px 20px; font-size: 1em; cursor: pointer;" disabled>Loading...</button>
+    </div>
+    <!-- Right: convolved image -->
+    <div style="text-align: center;">
+      <p style="font-size: 0.9em;">Convolved</p>
+      <canvas id="img-convolved" width="300" height="300" style="border: 1px solid #ccc;"></canvas>
+    </div>
+  </div>
+
+  <script>
+  (function() {
+    const defaults = [
+      [-1, 2, -1],
+      [2, -4, 2],
+      [-1, 2, -1]
+    ];
+    const kernelGrid = document.getElementById("kernel-grid");
+    const button = document.getElementById("convolve-btn");
+    const originalCanvas = document.getElementById("img-original");
+    const convolvedCanvas = document.getElementById("img-convolved");
+    let sourceData = null;
+    let imageWidth = 0;
+    let imageHeight = 0;
+
+    function buildKernelGrid() {
+      defaults.forEach((row, rowIndex) => {
+        const tr = document.createElement("tr");
+        row.forEach((value, columnIndex) => {
+          const td = document.createElement("td");
+          const input = document.createElement("input");
+          input.type = "text";
+          input.value = String(value);
+          input.style.width = "50px";
+          input.style.textAlign = "center";
+          input.style.padding = "4px";
+          input.style.fontSize = "0.9em";
+          input.id = `k${rowIndex}${columnIndex}`;
+          input.setAttribute("aria-label", `Kernel row ${rowIndex + 1}, column ${columnIndex + 1}`);
+          td.appendChild(input);
+          tr.appendChild(td);
+        });
+        kernelGrid.appendChild(tr);
+      });
+    }
+
+    function getKernel() {
+      return defaults.flatMap((row, rowIndex) => row.map((unused, columnIndex) => {
+        const value = Number(document.getElementById(`k${rowIndex}${columnIndex}`).value);
+        return Number.isFinite(value) ? value : 0;
+      }));
+    }
+
+    function convolveRgba(source, width, height, kernel) {
+      const result = new Uint8ClampedArray(source.length);
+      const kernelSum = kernel.reduce((sum, value) => sum + value, 0);
+      const normalize = Math.abs(kernelSum) > 1e-6;
+
+      for (let y = 0; y < height; y += 1) {
+        for (let x = 0; x < width; x += 1) {
+          const outputOffset = (y * width + x) * 4;
+
+          for (let channel = 0; channel < 3; channel += 1) {
+            let sum = 0;
+            for (let kernelY = 0; kernelY < 3; kernelY += 1) {
+              const sourceY = Math.max(0, Math.min(height - 1, y + kernelY - 1));
+              for (let kernelX = 0; kernelX < 3; kernelX += 1) {
+                const sourceX = Math.max(0, Math.min(width - 1, x + kernelX - 1));
+                const sourceOffset = (sourceY * width + sourceX) * 4 + channel;
+                sum += source[sourceOffset] * kernel[kernelY * 3 + kernelX];
+              }
+            }
+
+            if (normalize) sum /= kernelSum;
+            result[outputOffset + channel] = Math.trunc(Math.min(255, Math.abs(sum)));
+          }
+
+          result[outputOffset + 3] = 255;
+        }
+      }
+
+      return result;
+    }
+
+    function drawConvolution() {
+      const result = convolveRgba(sourceData, imageWidth, imageHeight, getKernel());
+      convolvedCanvas.width = imageWidth;
+      convolvedCanvas.height = imageHeight;
+      convolvedCanvas.getContext("2d").putImageData(
+        new ImageData(result, imageWidth, imageHeight),
+        0,
+        0
+      );
+    }
+
+    function applyConvolution() {
+      if (!sourceData || button.disabled) return;
+      button.disabled = true;
+      button.textContent = "Working...";
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          try {
+            drawConvolution();
+          } finally {
+            button.textContent = "Apply";
+            button.disabled = false;
+          }
+        });
+      });
+    }
+
+    buildKernelGrid();
+    button.addEventListener("click", applyConvolution);
+    kernelGrid.addEventListener("keydown", event => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        applyConvolution();
+      }
+    });
+
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = function() {
+      const sourceCanvas = document.createElement("canvas");
+      sourceCanvas.width = img.width;
+      sourceCanvas.height = img.height;
+      const ctx = sourceCanvas.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+      sourceData = ctx.getImageData(0, 0, img.width, img.height).data;
+      imageWidth = img.width;
+      imageHeight = img.height;
+
+      originalCanvas.width = imageWidth;
+      originalCanvas.height = imageHeight;
+      originalCanvas.getContext("2d").drawImage(img, 0, 0);
+      convolvedCanvas.width = imageWidth;
+      convolvedCanvas.height = imageHeight;
+      convolvedCanvas.getContext("2d").drawImage(img, 0, 0);
+
+      button.textContent = "Apply";
+      button.disabled = false;
+    };
+    img.onerror = function() {
+      button.textContent = "Image unavailable";
+    };
+    img.src = "/assets/img/stego_example.png";
+  })();
+  </script>
+</div>
+
+
+<!-- Slide with Magnifier -->
+<div class="slide">
+  <h2>Hide in the noise</h2>
+  <h3>Content Adaptive Steganography</h3>
+  <div class="magnifier" style="height: 400px; width: 400px; margin: 0 auto; aspect-ratio: 1 / 1;">
+    <img class="magsmall" src="/assets/img/stego_example.png" alt="Stego" style="height: 400px; width: 400px; aspect-ratio: 1 / 1;" />
+    <div class="maglens" style="width:75px; height:75px">
+      <img class="maglarge" src="/assets/img/stego_changes_example.png" alt="Stego changes" style="height: 400px; width: 400px; aspect-ratio: 1 / 1;" />
+    </div>
+  </div>
+</div>
+
+<!-- Slide with Gradio Demo -->
+<div class="slide">
+  <h2>Steganography Demo</h2>
+  <iframe
+    class="gradio-frame"
+    src="https://yassine-stego.hf.space/"
+    title="Interactive steganography demo"
+    loading="lazy"
+  ></iframe>
+  <p><small><a href="https://yassine-stego.hf.space/" target="_blank" rel="noopener">Open the demo in a new tab</a></small></p>
+</div>
+
+
+<!-- Divider Slide Template -->
+<div class="slide divider">
+  <h1>Detecting</h1>
+  <h2>Steganalysis</h2>
+</div>
+
+<!-- Normal Slide -->
+<div class="slide">
+  <h2>Steganalysis</h2>
+  <ul>
+    <li>🔍 Eve intercepts the communication</li>
+    <li>Under Kerckhoffs's principle, she knows the system but not the key</li>
+    <li>She tries to determine if the image contains a hidden message or not (binary classification)</li>
+  </ul>
+</div>
+
+
+<!-- Normal Slide -->
+<div class="slide">
+  <h2>Detect in the noise</h2>
+  <img src="assets/img/srnet.png" alt="Description" />
+  <p style="text-align: center;">
+    <small>Boroumand, Mehdi, Mo Chen, and Jessica Fridrich. "Deep residual network for steganalysis of digital images." IEEE Transactions on Information Forensics and Security 14.5 (2018)</small>
+  </p>
+</div>
+
+<div class="slide">
+  <h2>Detect in the noise</h2>
+  <img src="assets/img/srnet2.png" alt="Description" />
+  <p style="text-align: center;">
+    <small>Outputs of Layer 7 from SRNet visualized as grayscale images.</small>
+  </p>
+  <p style="text-align: center;">
+    <small>Yousfi, Yassine. "Deep Learning for Image Steganography and Steganalysis: Challenges, Advances, and Opportunities." State University of New York at Binghamton, 2022.</small>
+  </p>
+</div>
+
+<!-- Normal Slide -->
+<div class="slide">
+  <h2>Source Mismatch</h2>
+  <h3>Detectors are sensitive to:</h3>
+  <ul>
+    <li>cover source mismatch: different cameras, processing pipeline, image sizes, etc.</li>
+    <li>stego source mismatch: different embedding algorithms, payload sizes, etc.</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Source Mismatch</h2>
+  <img src="assets/img/csm.png" alt="Description" />
+  <p style="text-align: center;">
+    <small>Giboulot, Quentin, et al. "Effects and solutions of cover-source mismatch in image steganalysis." Signal Processing: Image Communication 86 (2020)</small>
+  </p>
+</div>
+
+
+<div class="slide">
+  <h2>Mechanistic Interpretability of Steganalysis Models</h2>
+  <img src="assets/img/ldeas.png" alt="Description" />
+  <p style="text-align: center;">
+    <small>Examples of visible local traces of Steganography found using SRNet.</small>
+  </p>
+  <p style="text-align: center;">
+    <small>Yousfi, Yassine, Jan Butora, and Jessica Fridrich. "CNN steganalyzers leverage local embedding artifacts." 2021 IEEE International Workshop on Information Forensics and Security (WIFS). IEEE, 2021.</small>
+  </p>
+</div>
+
+<div class="slide">
+  <h2>Mechanistic Interpretability of Steganalysis Models</h2>
+  <img src="assets/img/ldeas2.png" alt="Description" />
+  <p style="text-align: center;">
+    <small>Examples of visible local traces of Steganography found using SRNet.</small>
+  </p>
+  <p style="text-align: center;">
+    <small>Yousfi, Yassine, Jan Butora, and Jessica Fridrich. "CNN steganalyzers leverage local embedding artifacts." 2021 IEEE International Workshop on Information Forensics and Security (WIFS). IEEE, 2021.</small>
+  </p>
+</div>
+
+<div class="slide">
+  <h2>Generative Steganography</h2>
+  <ul>
+    <li>Generator makes stego images that try to fool the discriminator</li>
+    <li>Discriminator tries to detect the stego images</li>
+    <li>Train minimax game</li>
+    <li>Can collapse, mode dropping, or fail to converge</li>
+  </ul>
+</div>
+
+
+<div class="slide">
+  <h2>Vibe (Agentic) Steganography</h2>
+  <img src="assets/img/autostego.png" alt="Description" />
+  <p style="text-align: center;">
+    <small>AUTO STEGO</small>
+  </p>
+</div>
+
+<!-- Divider Slide Template -->
+<div class="slide divider">
+  <h1>Protecting</h1>
+  <h2>Watermarking</h2>
+</div>
+
+<div class="slide">
+  <h2>Watermarking</h2>
+  <img src="assets/img/shutterstock.png" alt="Description" />
+  <p style="text-align: center;">
+    <small>Source: Shutterstock lol</small>
+  </p>
+</div>
+
+<div class="slide">
+  <h2>Watermarking</h2>
+  <img src="assets/img/watermarking.png" alt="Description" />
+</div>
+
+<div class="slide">
+  <h2>Watermarking</h2>
+  <img src="assets/img/eu_ai_act.png" alt="Description" />
+</div>
+
+
+<div class="slide">
+  <img src="assets/img/nn_watermarking.png" alt="Description" />
+  <p style="text-align: center;">
+    <small>Boenisch, Franziska. "A systematic review on model watermarking for neural networks." Frontiers in Big Data 4 (2021).</small>
+  </p>
+</div>
+
+<div class="slide">
+  <h2>Watermarking</h2>
+  <img src="assets/img/watermarking_skl.png" alt="Description" />
+</div>
+
+
+<!-- Divider Slide Template -->
+<div class="slide divider">
+  <h1>Thank You</h1>
+  <h2>Questions?</h2>
+</div>
+
+
+<nav>
+  <button id="prev">&larr; Prev</button>
+  <div class="nav-jump">
+    <input id="slide-jump" type="number" min="1" step="1" inputmode="numeric" aria-label="Jump to slide number" />
+    <button id="jump">Go</button>
+  </div>
+  <span id="counter" role="status" aria-live="polite"></span>
+  <button id="next">Next &rarr;</button>
+</nav>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let cur = 0;
+
+function jumpToSlide() {
+  const jumpInput = document.getElementById('slide-jump');
+  const target = Number.parseInt(jumpInput.value, 10);
+  if (Number.isNaN(target)) return;
+  show(target - 1);
+}
+
+function show(i) {
+  slides[cur].classList.remove('active');
+  cur = Math.max(0, Math.min(i, slides.length - 1));
+  slides[cur].classList.add('active');
+  slides[cur].scrollTop = 0;
+  slides[cur].scrollLeft = 0;
+  document.getElementById('counter').textContent = (cur + 1) + ' / ' + slides.length;
+  document.getElementById('slide-jump').value = cur + 1;
+  document.getElementById('slide-jump').max = slides.length;
+  if (typeof MAGNIFIER !== 'undefined' && slides[cur].querySelector('.magnifier')) MAGNIFIER.reset();
+}
+
+document.getElementById('prev').onclick = () => show(cur - 1);
+document.getElementById('next').onclick = () => show(cur + 1);
+document.getElementById('jump').onclick = jumpToSlide;
+document.getElementById('slide-jump').addEventListener('keydown', e => {
+  if (e.key === 'Enter') jumpToSlide();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft') show(cur - 1);
+  if (e.key === 'ArrowRight') show(cur + 1);
+});
+
+window.addEventListener('resize', () => {
+  if (typeof MAGNIFIER !== 'undefined' && slides[cur].querySelector('.magnifier')) MAGNIFIER.reset();
+});
+
+show(0);
+</script>
+</body>
+</html>

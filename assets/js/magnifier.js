@@ -48,6 +48,7 @@ var imagePairData = [];
 
 // currentImagePair: the imagePairData for the item currently being magnified, if any
 var currentImagePair;
+var listenersInitialized = false;
 
 
 // Simon Willison's addLoadEvent -- http://simonwillison.net/2004/May/26/addLoadEvent/
@@ -74,6 +75,7 @@ function centerRect(rect, x, y) {
 
 function findImagePairData(x, y) {
   for (var i = 0; i < imagePairData.length; ++i) {
+    refreshSmallImagePosition(imagePairData[i]);
     if (imagePairData[i].contains(x, y)) {
       return imagePairData[i];
     }
@@ -113,6 +115,7 @@ function getComputedValue(elt, property) {
 function getImagePairData(x, y) {
   // reuse current data if possible
   if (currentImagePair) {
+    refreshSmallImagePosition(currentImagePair);
     if (currentImagePair.contains(x, y)) {
       return currentImagePair;
     }
@@ -124,6 +127,14 @@ function getImagePairData(x, y) {
   else {
     return findImagePairData(x, y);
   }
+}
+
+function refreshSmallImagePosition(data) {
+  var rect = data.small.image.getBoundingClientRect();
+  var scrollX = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
+  var scrollY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+  data.small.x = rect.left + scrollX;
+  data.small.y = rect.top + scrollY;
 }
 
 function getInlineValue(elt, property) {
@@ -250,8 +261,12 @@ function makeImagePairData(i, largeImage) {
   var sx = getOffset(smallImage, "offsetLeft");
   var sy = getOffset(smallImage, "offsetTop");
 
-  var sw = getInlineValue(parent, "width");
-  var sh = getInlineValue(parent, "height");
+  var sw = getComputedValue(parent, "width");
+  var sh = getComputedValue(parent, "height");
+  if (!sw || !sh || isNaN(sw) || isNaN(sh)) {
+    sw = getInlineValue(parent, "width");
+    sh = getInlineValue(parent, "height");
+  }
   if (isNaN(sw) || isNaN(sh)) {
     magAlert("Can't get small image dimensions for " + imageLabel);
     return null;
@@ -262,8 +277,12 @@ function makeImagePairData(i, largeImage) {
   }
 
   // The size of the large image is specifed on the image.
-  var lw = getInlineValue(largeImage, "width");
-  var lh = getInlineValue(largeImage, "height");
+  var lw = getComputedValue(largeImage, "width");
+  var lh = getComputedValue(largeImage, "height");
+  if (!lw || !lh || isNaN(lw) || isNaN(lh)) {
+    lw = getInlineValue(largeImage, "width");
+    lh = getInlineValue(largeImage, "height");
+  }
   if (!lw || !lh) {
     magAlert("Can't get large image dimensions for " + imageLabel);
     return null;
@@ -276,7 +295,8 @@ function makeImagePairData(i, largeImage) {
     lens: lens,
     rect: rect,
     contains: function(x, y) {
-                return (sx <= x && x <= sx + sw && sy <= y && y <= sy + sh);
+                return (this.small.x <= x && x <= this.small.x + this.small.width &&
+                        this.small.y <= y && y <= this.small.y + this.small.height);
               }
   };
 }
@@ -309,12 +329,10 @@ function mouseTrack(evt) {
   if (evt && !(evt.pageX === undefined)) {
      x = evt.pageX;
      y = evt.pageY;
-     evt.stopPropagation();
   }
   else { // Internet Explorer
      x = event.clientX + (document.body.scrollLeft || document.documentElement.scrollLeft) - document.body.clientLeft;
      y = event.clientY + (document.body.scrollTop || document.documentElement.scrollTop) - document.body.clientTop;
-     event.cancelBubble = true;
   }
 
   var data = getImagePairData(x, y);
@@ -354,8 +372,8 @@ function updateMagnifiedImage(x, y, data) {
     // position lens
     centerLens(data, rx, ry);
     // then calculate upper left of large image relative to lens div
-    Sx = x - Rx - getOffset(data.lens.node, "offsetLeft");
-    Sy = y - Ry - getOffset(data.lens.node, "offsetTop");
+    Sx = (data.lens.width / 2) - Rx;
+    Sy = (data.lens.height / 2) - Ry;
   }
   else { // if using clip rect
     // position clip region
@@ -373,9 +391,34 @@ function updateMagnifiedImage(x, y, data) {
   currentImagePair = data;
 }
 
-// Set up mousetracking; support W3C standard and IE
+function pointerTrack(evt) {
+  if (evt.isPrimary === false) {
+    return;
+  }
+  mouseTrack(evt);
+}
+
+function endPointerTrack(evt) {
+  if (evt.pointerType !== "mouse" && currentImagePair) {
+    hideMagnifiedImage(currentImagePair.large.image);
+    currentImagePair = null;
+  }
+}
+
+// Set up pointer tracking with mouse-only fallbacks for older browsers.
 function initListeners() {
-  if (document.addEventListener) {
+  if (listenersInitialized) {
+    return;
+  }
+  listenersInitialized = true;
+
+  if (window.PointerEvent && document.addEventListener) {
+    document.addEventListener('pointerdown', pointerTrack, true);
+    document.addEventListener('pointermove', pointerTrack, true);
+    document.addEventListener('pointerup', endPointerTrack, true);
+    document.addEventListener('pointercancel', endPointerTrack, true);
+  }
+  else if (document.addEventListener) {
     document.addEventListener('mousemove', mouseTrack, true);
   }
   else if (document.attachEvent) {
@@ -394,6 +437,10 @@ function registerImagePairs() {
   // Careful! makeImagePairData() inserts small images before the large
   // images so collect large images first to avoid endless insertion.
   var largeImages = getLargeImages();
+  if (currentImagePair) {
+    hideMagnifiedImage(currentImagePair.large.image);
+    currentImagePair = null;
+  }
   imagePairData = [];
 
   for (var i = 0; i < largeImages.length; ++i) {
@@ -472,5 +519,3 @@ return {
 // End private function; call it to initialize event handlers
 // Change true to false to silence errors noticed in loading images
 }(true);
-
-

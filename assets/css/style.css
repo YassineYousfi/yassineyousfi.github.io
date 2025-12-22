@@ -92,6 +92,10 @@ pre {
     padding-bottom: 0.6rem;
   }
 
+  .site-nav:first-of-type {
+    margin-left: 0;
+  }
+
   .site-nav {
     width: 100%;
     display: flex;

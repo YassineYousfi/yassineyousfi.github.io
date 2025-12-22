@@ -2,12 +2,15 @@
 .magnifier {
   overflow: hidden;
   position: relative;
+  touch-action: none;
+  user-select: none;
 }
 
 /* style for the DIV that is the magnifier lens */
 .maglens {
   position: absolute;
   overflow: hidden;
+  pointer-events: none;
   width: 150px;
   height: 150px;
   /* optional so you can see it */
@@ -17,6 +20,7 @@
 /* stop theme “responsive img” rules from breaking sizing */
 .magnifier img {
   max-width: none !important;
+  -webkit-user-drag: none;
 }
 
 /* style for the small IMG that appears on the page */

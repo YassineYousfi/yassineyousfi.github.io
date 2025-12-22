@@ -3,9 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Teaching · Yassine Yousfi</title>
+<title>comma.ai · Yassine Yousfi</title>
 <!-- Styles -->
 <link rel="stylesheet" href="/assets/css/style.css" />
+<style>
+.world-model-demo { margin: 0 0 1rem; }
+.world-model-demo video { display: block; width: 100%; height: auto; }
+.world-model-demo figcaption { margin-top: 0.5rem; color: var(--muted); font-size: 0.9rem; }
+</style>
 </head>
 
 <body>
@@ -14,8 +19,141 @@
 </header>
 <main class="content">
 
-<h1>My work at comma.ai</h1>
+<h1>comma.ai</h1>
+<figure class="world-model-demo">
+  <video src="../assets/vid/worldmodeldriving.mp4" controls playsinline></video>
+  <figcaption>A driving policy training in the world model. Strong steering noise causes drift, and the policy learns to recover with further training. Shown at 2× speed.</figcaption>
+</figure>
+<p>
+  Things I am working on at
+  <a href="https://comma.ai/" target="_blank" rel="noopener">comma.ai</a>.
+</p>
 
+<section>
+  <h2>End-to-End Machine Learning and World Models for Autonomous Driving</h2>
+  <p>
+    <em>
+      Adapted from
+      <a href="https://blog.comma.ai/mlsim/" target="_blank" rel="noopener">Learning to Drive from a World Model</a>.
+    </em>
+  </p>
+  <p>
+    By now, most autonomous driving labs agree that building a fully autonomous driving policy
+    based on hard-coded rules and engineered features is doomed to fail. The only realistic way
+    to build an autonomous driving policy that scales to arbitrarily complex and diverse
+    environments is to use methods that scale arbitrarily with computation and data: search and
+    learning.<sup id="fnref1"><a href="#fn1">1</a></sup> We want a driving policy that is trained
+    end-to-end and learns to drive from experience like we do.
+  </p>
+  <p>
+    A key challenge in end-to-end learning is how to train a policy that can perform well outside
+    the i.i.d. setting assumed by most supervised learning algorithms, such as behavior cloning.
+    In the real world, the policy's predictions influence its future observations. Small errors
+    accumulate over time, leading to a compounding effect that drives the system into states it
+    never encountered during pure imitation-learning training.
+  </p>
+  <p>
+    To overcome this, the driving policy needs to be trained on-policy, allowing it to learn from
+    its own interactions with the environment and enabling it to recover from its own mistakes.
+  </p>
+  <p>
+    World models<sup id="fnref-world-models"><a href="#fn2">2</a>, <a href="#fn3">3</a>,
+    <a href="#fn4">4</a></sup> are data-driven simulators. They are generative models that predict
+    the next world state given a history of past states and actions.
+  </p>
+  <p>
+    World models can take many forms. The key idea is to represent the state as a lower-dimensional
+    latent representation using a “compressor model,” and to model the dynamics of the latent space
+    using a “dynamics model.”
+  </p>
+  <p>
+    We can control the world model by providing a desired six-degree-of-freedom (6-DoF) relative
+    transformation between the current and next state.
+  </p>
+  <p>
+    The driving policy is trained in the (dreams of the) world model and then deployed in the real
+    world.
+  </p>
+  <p>
+    <a href="https://blog.comma.ai/mlsim/" target="_blank" rel="noopener">Read more about it</a>.
+  </p>
+
+  <section class="footnotes">
+    <h3>References</h3>
+    <ol>
+      <li id="fn1">
+        Richard Sutton. “<a href="https://www.incompleteideas.net/IncIdeas/BitterLesson.html" target="_blank" rel="noopener">The Bitter Lesson</a>.” 2019.
+        <a class="footnote-backref" href="#fnref1">↩︎</a>
+      </li>
+      <li id="fn2">
+        David Ha and Jürgen Schmidhuber. “<a href="https://proceedings.neurips.cc/paper/2018/hash/2de5d16682c3c35007e4e92982f1a2ba-Abstract.html" target="_blank" rel="noopener">Recurrent World Models Facilitate Policy Evolution</a>.” Advances in Neural Information Processing Systems 31, 2018.
+        <a class="footnote-backref" href="#fnref-world-models">↩︎</a>
+      </li>
+      <li id="fn3">
+        Anthony Hu et al. “<a href="https://arxiv.org/abs/2309.17080" target="_blank" rel="noopener">GAIA-1: A Generative World Model for Autonomous Driving</a>.” 2023.
+        <a class="footnote-backref" href="#fnref-world-models">↩︎</a>
+      </li>
+      <li id="fn4">
+        Eder Santana and George Hotz. “<a href="https://arxiv.org/abs/1608.01230" target="_blank" rel="noopener">Learning a Driving Simulator</a>.” 2016.
+        <a class="footnote-backref" href="#fnref-world-models">↩︎</a>
+      </li>
+    </ol>
+  </section>
+</section>
+
+<section>
+  <h2>Other Fun Things I Am Doing at comma.ai</h2>
+
+  <h3>CTFs</h3>
+  <ul class="linklist">
+    <li><a href="https://comma.ai/neurips" target="_blank" rel="noopener">comma.ai/tinycorp NeurIPS CTF</a></li>
+    <li><a href="https://x.com/yassineyousfi_/status/2025800613867721199" target="_blank" rel="noopener">NYC blizzard CTF</a></li>
+  </ul>
+
+  <h3>Coding Challenges</h3>
+  <ul class="linklist">
+    <li><a href="https://github.com/commaai/comma_video_compression_challenge" target="_blank" rel="noopener">comma Video Compression Challenge</a></li>
+    <li><a href="https://github.com/commaai/commavq/tree/master/compression" target="_blank" rel="noopener">commaVQ Compression Challenge</a></li>
+  </ul>
+
+  <h3>Datasets</h3>
+  <ul class="linklist">
+    <li><a href="https://huggingface.co/datasets/commaai/comma1M" target="_blank" rel="noopener">comma1M</a></li>
+    <li><a href="https://huggingface.co/datasets/commaai/commavq" target="_blank" rel="noopener">commaVQ</a></li>
+    <li><a href="https://github.com/commaai/comma10k" target="_blank" rel="noopener">comma10k</a></li>
+    <li><a href="https://huggingface.co/datasets/commaai/commabody" target="_blank" rel="noopener">commabody</a></li>
+    <li><a href="https://huggingface.co/datasets/Yassine/coffee_test" target="_blank" rel="noopener">commabodycoffee_test</a></li>
+  </ul>
+
+  <h3>Models</h3>
+  <ul class="linklist">
+    <li><a href="https://huggingface.co/commaai/vit-ae-2x-f8c32" target="_blank" rel="noopener">vit-ae-2x-f8c32</a></li>
+    <li><a href="https://huggingface.co/commaai/comma10k-segnet" target="_blank" rel="noopener">comma10k-segnet</a></li>
+    <li><a href="https://huggingface.co/commaai/commavq-gpt2m" target="_blank" rel="noopener">commavq-gpt2m</a></li>
+  </ul>
+
+  <h3>Papers</h3>
+  <ul class="linklist">
+    <li><a href="https://arxiv.org/abs/2504.19077" target="_blank" rel="noopener">Learning to Drive from a World Model</a></li>
+  </ul>
+
+  <h3>Notable Blog Posts</h3>
+  <ul class="linklist">
+    <li><a href="https://blog.comma.ai/mlsim/" target="_blank" rel="noopener">Learning to Drive from a World Model</a></li>
+    <li><a href="https://blog.comma.ai/011release/" target="_blank" rel="noopener">openpilot 0.11</a> — the first point release using <em>only</em> the world model as the simulation stack</li>
+    <li><a href="https://blog.comma.ai/010release/" target="_blank" rel="noopener">openpilot 0.10</a> — the first point release using the world model as part of the simulation stack</li>
+    <li><a href="https://blog.comma.ai/taco-bell/" target="_blank" rel="noopener">Driving to Taco Bell with openpilot end-to-end</a> — lateral control, longitudinal control, and point-to-point navigation</li>
+    <li><a href="https://blog.comma.ai/090release/" target="_blank" rel="noopener">openpilot 0.9.0</a> — experimental end-to-end longitudinal control</li>
+    <li><a href="https://blog.comma.ai/0810release/" target="_blank" rel="noopener">openpilot 0.8.10</a> — my first openpilot release</li>
+  </ul>
+
+  <h3>Talks</h3>
+  <ul class="linklist">
+    <li><a href="https://youtu.be/rwV5bnt3ThY?t=21364" target="_blank" rel="noopener">Data-Driven Autonomous Driving Simulation — DDADS at CVPR 2025</a></li>
+    <li><a href="https://youtu.be/NbMc9y1XK5E" target="_blank" rel="noopener">Look Ma, No Labels — COMMA CON 2025</a></li>
+    <li><a href="https://youtu.be/EqQNZXqzFSI" target="_blank" rel="noopener">Learning a Driving Simulator — COMMA_CON 2023</a></li>
+  </ul>
+</section>
 
 </main>
 </body>

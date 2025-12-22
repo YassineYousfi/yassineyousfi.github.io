@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Internships · Yassine Yousfi</title>
+<!-- Styles -->
+<link rel="stylesheet" href="/assets/css/style.css" />
+<style>
+.internship-meta { margin-top: -0.5rem; color: var(--muted); }
+.internship-figure { margin: 1rem 0; }
+.internship-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--border); }
+.internship-figure figcaption { margin-top: 0.4rem; color: var(--muted); font-size: 0.9rem; }
+</style>
+</head>
+
+<body>
+<header class="site-header">
+<a class="site-title" href="/index.html">Home</a>
+</header>
+<main class="content">
+
+<h1>Internships</h1>
+<section>
+  <h2>Decathlon</h2>
+  <p class="internship-meta">Data Scientist Apprentice · September 2017–August 2018 · Lille, France</p>
+  <p>
+    For those who don't know, Decathlon is a French sporting goods retailer, and a huge one.
+    Around the time I was there, it had more than 90,000 employees and around 1,600 stores and
+    outlets. It also does an unusual amount of work itself, from product design and logistics to
+    retail, IT, and data science. My office was tucked behind a massive store in Lille, so I could
+    stare at product SKUs on my screen and then walk a few steps to meet the actual shoes and rugby
+    gear. I loved that.
+  </p>
+  <p>My main projects:</p>
+  <ul>
+    <li>
+      <strong>Marketing attribution:</strong> an in-house Shapley-value model that shared conversion
+      credit across combinations of marketing touchpoints.
+    </li>
+    <li>
+      <strong>Product clustering:</strong> a large, sparsified catalog graph where products were nodes
+      and co-views and co-purchases formed weighted edges. Graph similarity and clustering powered
+      an internal product explorer without hand-written rules.
+    </li>
+  </ul>
+  <figure class="internship-figure">
+    <img src="/assets/img/decathlon_clustering.png" alt="Internal tool showing a cluster of related sporting goods around a selected product" loading="lazy" />
+    <figcaption>Internal tool showing a cluster of related sporting goods around a selected product.</figcaption>
+  </figure>
+  <figure class="internship-figure">
+    <img src="/assets/img/decathlon_graph_stats.png" alt="Degree and edge-weight distributions for the product graph" loading="lazy" />
+    <figcaption>Degree and edge-weight distributions for the product graph.</figcaption>
+  </figure>
+  <ul>
+    <li>
+      <strong>Sales forecasting:</strong> a multi-step CatBoost model using past sales, promotions,
+      holidays, and weather. It beat expert forecasts.
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2>Deloitte</h2>
+  <p class="internship-meta">Consultant Intern · April 2016–August 2017 · Luxembourg</p>
+  <p>
+    I joined the Luxembourg office and quickly collected a small alphabet soup: AML, CTF, KYC, PEP, PSD2. Somehow, I also
+    got to write code.
+  </p>
+  <p>My main project:</p>
+  <ul>
+    <li>
+      <strong>DKYC:</strong> helped the early team prototype
+      <a href="https://www.deloitte.com/lu/en/services/consulting-financial/services/deloitte-kyc.html" target="_blank" rel="noopener">Deloitte Know Your Counterparties</a>,
+      a web platform for KYC onboarding and ongoing monitoring. I worked on AML and CTF features
+      plus politically exposed person name matching for financial institutions.
+    </li>
+  </ul>
+  <p>Fewer rugby shirts, many more acronyms.</p>
+</section>
+
+
+</main>
+</body>
+</html>

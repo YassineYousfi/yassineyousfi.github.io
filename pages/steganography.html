@@ -17,6 +17,10 @@
 <!-- Site JS -->
 <link rel="stylesheet" href="/assets/css/magnifier.css">
 <script defer src="/assets/js/magnifier.js"></script>
+<style>
+.gradio-frame { display: block; width: 100%; height: clamp(560px, 75vh, 720px); border: 1px solid var(--border); border-radius: 8px; }
+.gradio-fallback { text-align: center; }
+</style>
 </head>
 
 <body>
@@ -61,7 +65,13 @@
     <img class="maglarge" src="/assets/img/stego_changes_example.png" alt="Stego changes" style="height: 400px; width: 400px; aspect-ratio: 1 / 1;" />
   </div>
 </div>
-
+<h1>Try it out!</h1>
+<iframe class="gradio-frame" src="https://yassine-stego.hf.space/" title="Interactive steganography demo" loading="lazy"></iframe>
+<p class="gradio-fallback"><a href="https://yassine-stego.hf.space/" target="_blank" rel="noopener">Open the demo in a new tab</a></p>
+<h1>AutoStego</h1>
+  <p>
+    An Automated 2 player game experiment for steganography and steganalysis.
+  </p>
 <section class="footnotes">
   <ol>
     <li id="fn1">
