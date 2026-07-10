@@ -8,14 +8,23 @@
 <link rel="stylesheet" href="/assets/css/style.css" />
 <style>
 .world-model-demo { margin: 0 0 1rem; }
-.world-model-demo video { display: block; width: 100%; height: auto; }
-.world-model-demo figcaption { margin-top: 0.5rem; color: var(--muted); font-size: 0.9rem; }
+.world-model-demo video,
+.world-model-figure img { display: block; width: 100%; height: auto; }
+.world-model-demo iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
+.world-model-figure { margin: 1rem 0; }
+.world-model-figure img { border: 1px solid var(--border); }
+.world-model-demo figcaption,
+.world-model-figure figcaption { margin-top: 0.5rem; color: var(--muted); font-size: 0.9rem; }
 </style>
 </head>
 
 <body>
 <header class="site-header">
-<a class="site-title" href="/index.html">Home</a>
+<a class="site-title" href="/index.html">Posts and Projects</a>
+<nav class="site-nav">
+  <a href="/teaching/">Teaching</a>
+  <a href="/publications/">Publications</a>
+</nav>
 </header>
 <main class="content">
 
@@ -77,7 +86,66 @@
   <p>
     <a href="https://blog.comma.ai/mlsim/" target="_blank" rel="noopener">Read more about it</a>.
   </p>
-
+  <h2>The holy trinity of scaling: inference, training, data</h2>
+  <p>
+    The driving world models we train are “World-Action Models”: they predict both future frames
+    and future actions. Their performance scales predictably over more than three orders of magnitude
+    in training FLOPs. Over the project's lifetime, we have scaled the models from 500 million to
+    4 billion parameters, expanded the training set from 500,000 to 10 million minutes of driving,
+    and grown the training mesh from 8-way Distributed Data Parallel (DDP) to a 32 × 8 Hybrid
+    Sharded Data Parallel (HSDP) mesh.
+  </p>
+  <figure class="world-model-figure">
+    <img src="/assets/img/worldmodel_scaling.png" alt="Log-scale chart showing frame-prediction loss decreasing as training FLOPs increase" loading="lazy" />
+    <figcaption>World model loss follows a consistent scaling law as training compute grows.</figcaption>
+  </figure>
+  <p>
+    Frame-prediction performance correlates almost perfectly with action-prediction performance
+    across model sizes, dataset sizes, and training epochs.
+  </p>
+  <figure class="world-model-figure">
+    <img src="/assets/img/worldmodel_correlation.png" alt="Scatter plot showing a close correlation between frame-prediction loss and action-prediction loss" loading="lazy" />
+    <figcaption>Validation world model loss closely tracks validation action-prediction loss.</figcaption>
+  </figure>
+  <p>
+    Inference-time efficiency is also important: during driving-policy training, thousands of
+    episode workers continually request frames from the world model. To serve them efficiently,
+    we quantize the diffusion transformer (DiT) to FP4/FP8, use an FP8 key-value (KV) cache, and
+    run classifier-free guidance (CFG) packed across the context dimension.
+  </p>
+  <p>
+    The driving policy also follows consistent scaling laws as we increase compute at inference time and during training.
+    We use the ConvNeXt family of models with depth/width maximal update parametrization (μP).
+  </p>
+  <figure class="world-model-figure">
+    <img src="/assets/img/inference_scaling.png" alt="Log-scale chart showing path-planning error decreasing as inference FLOPs increase" loading="lazy" />
+    <figcaption>Path-planning error follows a consistent scaling law as inference-time compute grows.</figcaption>
+  </figure>
+  <p>
+    Fun fact: inspecting the Git history of a file called <code>racks.py</code> in our codebase gives a nice visualization of
+    the growth of our data center.
+  </p>
+  <figure class="world-model-figure">
+    <img src="/assets/img/training_scaling.png" alt="Step chart showing peak data center FP16 throughput increasing from 2022 to 2026" loading="lazy" />
+    <figcaption>Peak data center FP16 throughput over time. GPUs go brrr.</figcaption>
+  </figure>
+  <p>
+    Another fun fact: Codex complained about querying a database to get the number of logged minutes of openpilot data,
+    saying that “the records get denser in recent months.” I guess Codex is right! FYI, the data is not cumulative.
+  </p>
+  <figure class="world-model-figure">
+    <img src="/assets/img/data_scaling.png" alt="Line chart showing logged monthly openpilot segments trending upward from 2022 to 2026" loading="lazy" />
+    <figcaption>Logged monthly openpilot data segments. Values are not cumulative.</figcaption>
+  </figure>
+  <h2>Watch it drive</h2>
+  <p>
+    There are lots of videos of openpilot driving out there. In fact, dear reader, you can buy one today and try it yourself!
+    But my all time favorite video is the Taco Bell drive!
+  </p>
+  <figure class="world-model-demo">
+    <iframe src="https://www.youtube.com/embed/SUIZYzxtMQs" title="Driving to Taco Bell with openpilot end-to-end" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <figcaption>Driving to Taco Bell with openpilot end-to-end.</figcaption>
+  </figure>
   <section class="footnotes">
     <h3>References</h3>
     <ol>
@@ -103,14 +171,19 @@
 
 <section>
   <h2>Other Fun Things I Am Doing at comma.ai</h2>
-
+  <p>
+    Some cool stuff. Weekend projects. Side quests.
+  </p>
   <h3>CTFs</h3>
   <ul class="linklist">
-    <li><a href="https://comma.ai/neurips" target="_blank" rel="noopener">comma.ai/tinycorp NeurIPS CTF</a></li>
-    <li><a href="https://x.com/yassineyousfi_/status/2025800613867721199" target="_blank" rel="noopener">NYC blizzard CTF</a></li>
+    <li><a href="https://comma.ai/neurips" target="_blank" rel="noopener">comma.ai/tinycorp NeurIPS CTF</a><br>Organized a CTF for a NeurIPS 2025 social. Had a good turn out of >100 people</li>
+    <li><a href="https://x.com/yassineyousfi_/status/2025800613867721199" target="_blank" rel="noopener">Random 1 flagger</a><br>Short but hard</li>
   </ul>
 
   <h3>Coding Challenges</h3>
+  <p>
+    Mostly for hiring.
+  </p>
   <ul class="linklist">
     <li><a href="https://github.com/commaai/comma_video_compression_challenge" target="_blank" rel="noopener">comma Video Compression Challenge</a></li>
     <li><a href="https://github.com/commaai/commavq/tree/master/compression" target="_blank" rel="noopener">commaVQ Compression Challenge</a></li>
@@ -118,33 +191,33 @@
 
   <h3>Datasets</h3>
   <ul class="linklist">
-    <li><a href="https://huggingface.co/datasets/commaai/comma1M" target="_blank" rel="noopener">comma1M</a></li>
-    <li><a href="https://huggingface.co/datasets/commaai/commavq" target="_blank" rel="noopener">commaVQ</a></li>
-    <li><a href="https://github.com/commaai/comma10k" target="_blank" rel="noopener">comma10k</a></li>
-    <li><a href="https://huggingface.co/datasets/commaai/commabody" target="_blank" rel="noopener">commabody</a></li>
-    <li><a href="https://huggingface.co/datasets/Yassine/coffee_test" target="_blank" rel="noopener">commabodycoffee_test</a></li>
+    <li><a class="huggingface-repo" href="https://huggingface.co/datasets/commaai/comma1M" target="_blank" rel="noopener">comma1M</a></li>
+    <li><a class="huggingface-repo" href="https://huggingface.co/datasets/commaai/commavq" target="_blank" rel="noopener">commaVQ</a></li>
+    <li><a class="github-repo" href="https://github.com/commaai/comma10k" target="_blank" rel="noopener">comma10k</a></li>
+    <li><a class="huggingface-repo" href="https://huggingface.co/datasets/commaai/commabody" target="_blank" rel="noopener">commabody</a></li>
+    <li><a class="huggingface-repo" href="https://huggingface.co/datasets/Yassine/coffee_test" target="_blank" rel="noopener">commabodycoffee_test</a></li>
   </ul>
 
   <h3>Models</h3>
   <ul class="linklist">
-    <li><a href="https://huggingface.co/commaai/vit-ae-2x-f8c32" target="_blank" rel="noopener">vit-ae-2x-f8c32</a></li>
-    <li><a href="https://huggingface.co/commaai/comma10k-segnet" target="_blank" rel="noopener">comma10k-segnet</a></li>
-    <li><a href="https://huggingface.co/commaai/commavq-gpt2m" target="_blank" rel="noopener">commavq-gpt2m</a></li>
+    <li><a class="huggingface-repo" href="https://huggingface.co/commaai/vit-ae-2x-f8c32" target="_blank" rel="noopener">vit-ae-2x-f8c32</a></li>
+    <li><a class="huggingface-repo" href="https://huggingface.co/commaai/comma10k-segnet" target="_blank" rel="noopener">comma10k-segnet</a></li>
+    <li><a class="huggingface-repo" href="https://huggingface.co/commaai/commavq-gpt2m" target="_blank" rel="noopener">commavq-gpt2m</a></li>
   </ul>
 
   <h3>Papers</h3>
   <ul class="linklist">
-    <li><a href="https://arxiv.org/abs/2504.19077" target="_blank" rel="noopener">Learning to Drive from a World Model</a></li>
+    <li>Goff, M., et al. “<a href="https://openaccess.thecvf.com/content/CVPR2025W/DDADS/papers/Goff_Learning_to_Drive_from_a_World_Model_CVPRW_2025_paper.pdf" target="_blank" rel="noopener">Learning to Drive from a World Model</a>.” <em>Proceedings of the Computer Vision and Pattern Recognition Conference</em>, CVF, 2025, pp. 1964–1973.</li>
   </ul>
 
   <h3>Notable Blog Posts</h3>
   <ul class="linklist">
-    <li><a href="https://blog.comma.ai/mlsim/" target="_blank" rel="noopener">Learning to Drive from a World Model</a></li>
-    <li><a href="https://blog.comma.ai/011release/" target="_blank" rel="noopener">openpilot 0.11</a> — the first point release using <em>only</em> the world model as the simulation stack</li>
-    <li><a href="https://blog.comma.ai/010release/" target="_blank" rel="noopener">openpilot 0.10</a> — the first point release using the world model as part of the simulation stack</li>
-    <li><a href="https://blog.comma.ai/taco-bell/" target="_blank" rel="noopener">Driving to Taco Bell with openpilot end-to-end</a> — lateral control, longitudinal control, and point-to-point navigation</li>
-    <li><a href="https://blog.comma.ai/090release/" target="_blank" rel="noopener">openpilot 0.9.0</a> — experimental end-to-end longitudinal control</li>
-    <li><a href="https://blog.comma.ai/0810release/" target="_blank" rel="noopener">openpilot 0.8.10</a> — my first openpilot release</li>
+    <li><a href="https://blog.comma.ai/mlsim/" target="_blank" rel="noopener">Learning to Drive from a World Model</a><br>Companion blog post of a 2025 CVPR paper</li>
+    <li><a href="https://blog.comma.ai/011release/" target="_blank" rel="noopener">openpilot 0.11</a><br>the first point release using <em>only</em> the world model as the simulation stack</li>
+    <li><a href="https://blog.comma.ai/010release/" target="_blank" rel="noopener">openpilot 0.10</a><br>the first point release using the world model as part of the simulation stack</li>
+    <li><a href="https://blog.comma.ai/taco-bell/" target="_blank" rel="noopener">Driving to Taco Bell with openpilot end-to-end</a><br>lateral control, longitudinal control, and point-to-point navigation</li>
+    <li><a href="https://blog.comma.ai/090release/" target="_blank" rel="noopener">openpilot 0.9.0</a><br>experimental end-to-end longitudinal control</li>
+    <li><a href="https://blog.comma.ai/0810release/" target="_blank" rel="noopener">openpilot 0.8.10</a><br>my first openpilot release hehe</li>
   </ul>
 
   <h3>Talks</h3>
@@ -156,5 +229,6 @@
 </section>
 
 </main>
+  <script src="/assets/js/github-repo.js"></script>
 </body>
 </html>
