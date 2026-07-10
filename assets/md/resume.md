@@ -11,11 +11,11 @@
 *November 2023 - Present | San Diego, CA*
 
 - Lead machine learning for:
-  - world models and simulators
-  - autonomous driving
+  - world models for autonomous driving simulation
+  - autonomous driving models
   - driver monitoring
   - control systems
-- Build automated model testing and monitoring.
+- Hiring and community work.
 
 ### comma.ai Research — Research Engineer
 
@@ -23,7 +23,6 @@
 
 - Shipped end-to-end lateral and longitudinal autonomous driving models to 10,000+ users.
 - Built a point-to-point autonomous driving proof of concept requiring no driver interaction.
-- Improved training infrastructure and model performance.
 
 ### Binghamton University, DDE Lab — Graduate Researcher
 
@@ -33,8 +32,7 @@
   - steganography (covert communication)
   - steganalysis (detection of covert communication)
   - watermarking (copyright protection)
-- Developed state-of-the-art deep learning methods for image steganography and steganalysis.
-- Studied ML model scalability, robustness, and interpretability for steganography and steganalysis.
+  - deep learning
 
 ### comma.ai Research — Machine Learning Engineer Intern
 
@@ -47,8 +45,8 @@
 
 *September 2017 - August 2018 | Lille, France*
 
-- Built a large-scale, multi-step sales forecasting model that outperformed expert forecasts.
-- Built a graph-based co-purchase and co-view similarity clustering tool without hand-written business rules.
+- Built a large-scale, multi-week sales forecasting model that outperformed expert forecasts.
+- Built a graph-based co-purchase and co-view similarity clustering tool.
 - Built a data-driven marketing attribution model using game-theoretic Shapley values.
 
 ### Deloitte Consulting — Consultant Intern
@@ -56,8 +54,7 @@
 *April 2016 - August 2017 | Luxembourg, Luxembourg*
 
 - Worked on anti-money laundering (AML) and counter-terrorism financing (CTF) systems.
-- Stress-tested AML systems for several financial institutions.
-- Joined the PSD2 (EU Revised Payment Services Directive) working group and internal Excellence & Quality initiative.
+- Stress-tested AML/CTF systems for several financial institutions.
 
 ## Education
 

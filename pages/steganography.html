@@ -20,12 +20,23 @@
 <style>
 .gradio-frame { display: block; width: 100%; height: clamp(560px, 75vh, 720px); border: 1px solid var(--border); border-radius: 8px; }
 .gradio-fallback { text-align: center; }
+.github-readme { min-width: 0; margin: 1rem 0; overflow-wrap: anywhere; line-height: 1.5; }
+.github-readme article > .markdown-heading:first-child,
+.github-readme .anchor { display: none; }
+.github-readme img { display: block; max-width: 100%; height: auto; }
+.github-readme pre,
+.github-readme table { display: block; max-width: 100%; overflow-x: auto; }
+.github-readme h2 { margin-top: 1.5rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--border); }
 </style>
 </head>
 
 <body>
 <header class="site-header">
-<a class="site-title" href="/index.html">Home</a>
+<a class="site-title" href="/index.html">Posts and Projects</a>
+<nav class="site-nav">
+  <a href="/teaching/">Teaching</a>
+  <a href="/publications/">Publications</a>
+</nav>
 </header>
 <main class="content">
 <h1>Steganography</h1>
@@ -69,9 +80,9 @@
 <iframe class="gradio-frame" src="https://yassine-stego.hf.space/" title="Interactive steganography demo" loading="lazy"></iframe>
 <p class="gradio-fallback"><a href="https://yassine-stego.hf.space/" target="_blank" rel="noopener">Open the demo in a new tab</a></p>
 <h1>AutoStego</h1>
-  <p>
-    An Automated 2 player game experiment for steganography and steganalysis.
-  </p>
+  <div class="github-readme" data-repo="YassineYousfi/autostego">
+    <p><a href="https://github.com/YassineYousfi/autostego#readme" target="_blank" rel="noopener">View the AutoStego README on GitHub</a>.</p>
+  </div>
 <section class="footnotes">
   <ol>
     <li id="fn1">
@@ -93,5 +104,6 @@
 </section>
 
 </main>
+  <script src="/assets/js/github-repo.js"></script>
 </body>
 </html>
