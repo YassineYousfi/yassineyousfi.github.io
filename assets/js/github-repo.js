@@ -1,6 +1,15 @@
 document.querySelectorAll('.github-repo').forEach(async link => {
   const repo = await fetch(`https://api.github.com/repos${new URL(link.href).pathname}`).then(response => response.json())
-  if (repo.description) link.after(document.createElement('br'), repo.description)
+  if (repo.description) {
+    const heading = link.closest('h2')
+    if (heading) {
+      const description = document.createElement('p')
+      description.textContent = repo.description
+      heading.after(description)
+    } else {
+      link.after(document.createElement('br'), repo.description)
+    }
+  }
 })
 
 document.querySelectorAll('.github-readme').forEach(async readme => {
