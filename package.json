@@ -1,0 +1,15 @@
+{
+  "name": "yassineyousfi.github.io",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "og": "node scripts/generate-og.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "og-images-generator": "0.6.2",
+    "parse5": "7.3.0"
+  }
+}

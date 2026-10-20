@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: og-images
+        name: Generate link previews
+        language: system
+        entry: npm run og
+        pass_filenames: false
+        always_run: true
